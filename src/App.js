@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import IceRevealCard from "./IceRevealCard";
+import IceRevealCard from "./components/ice-reveal-card.tsx";
 
 function App() {
   return (
