@@ -94,3 +94,18 @@
 .slider span {
   font-weight: bold;
 }
+
+.toggle-btn {
+  background: #00c3ff;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  font-size: 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.toggle-btn:hover {
+  background: #008acb;
+}

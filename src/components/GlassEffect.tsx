@@ -8,10 +8,13 @@ const images = [rect1, rect2];
 const GlassEffect = () => {
   const [index, setIndex] = useState(0);
   const [isBanging, setIsBanging] = useState(false);
-  const [width, setWidth] = useState(220); // Default width
-  const [height, setHeight] = useState(420); // Default height
+  const [width, setWidth] = useState(220);
+  const [height, setHeight] = useState(420);
+  const [isRunning, setIsRunning] = useState(true); // Control animation
 
   useEffect(() => {
+    if (!isRunning) return;
+
     const interval = setInterval(() => {
       setIsBanging(true);
 
@@ -22,22 +25,23 @@ const GlassEffect = () => {
     }, 1500);
 
     return () => clearInterval(interval);
-  }, []);
+  }, [isRunning]);
 
   return (
     <div className="page-container">
       <div
         className={`glass-container ${isBanging ? "bang" : ""}`}
-        style={{ width: `${width}px`, height: `${height}px` }}
+        style={{
+          width: `${width}px`,
+          height: `${height}px`,
+          transition: "width 0.3s ease-out, height 0.3s ease-out", // Smooth resizing
+        }}
       >
-        {/* Shockwave Effect */}
         <div className={`shockwave ${isBanging ? "active" : ""}`} />
-
-        {/* Glass Image */}
         <img src={images[index]} alt="Glass Effect" className="glass-image" />
       </div>
 
-      {/* Sliders for Width & Height */}
+      {/* Sliders & Stop/Start Button */}
       <div className="slider-container">
         <div className="slider">
           <label>Width</label>
@@ -61,6 +65,9 @@ const GlassEffect = () => {
           />
           <span>{height}px</span>
         </div>
+        <button className="toggle-btn" onClick={() => setIsRunning(!isRunning)}>
+          {isRunning ? "Stop" : "Start"}
+        </button>
       </div>
     </div>
   );
