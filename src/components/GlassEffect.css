@@ -21,21 +21,21 @@
   z-index: 2; /* Above the shockwave */
 }
 
-/* Shockwave Effect */
-.shockwave {
+/* Circular Shockwave Effect */
+.shockwave-circle {
   position: absolute;
-  width: 100%;
-  height: 100%;
-  border-radius: 15px;
-  background: radial-gradient(rgba(255, 255, 255, 0.4), transparent);
+  width: 50px;
+  height: 50px;
+  background: radial-gradient(rgba(255, 255, 255, 0.5), transparent);
+  border-radius: 50%;
   opacity: 0;
   transform: scale(1);
   transition: transform 0.2s ease-out, opacity 0.2s ease-out;
   z-index: 1; /* Behind the glass */
 }
 
-/* When the bang happens, the shockwave expands and fades */
-.shockwave.active {
-  opacity: 0.5;
-  transform: scale(1.4);
+/* Expanding shockwave when banging */
+.shockwave-circle.active {
+  opacity: 0.4;
+  transform: scale(4);
 }
