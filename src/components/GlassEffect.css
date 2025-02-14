@@ -1,85 +1,51 @@
-/* Full Viewport Background with Gradient */
-/* .page-container {
+.page-container {
   width: 100vw;
   height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(135deg, #000428, #004e92);
+  background: linear-gradient(135deg, #011a31, #011a31, #011a31); /* Dark Blue Gradient */
   overflow: hidden;
-} */
-
-/* Wrapper */
-.wrapper {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 20px;
 }
 
-/* Controls for Width & Height */
-.controls {
-  display: flex;
-  gap: 20px;
-  font-size: 14px;
-  color: white;
-}
-
-input[type="range"] {
-  margin-left: 10px;
-  cursor: pointer;
-}
-
-/* Glass Container */
 .glass-container {
-  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
-  border-radius: 12px;
-  transition: transform 0.1s ease-out;
-  overflow: hidden;
-  box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+  width: 220px; /* Match the glass size */
+  height: 420px;
+  position: relative;
+  transition: transform 0.15s cubic-bezier(0.3, 1.5, 0.7, 1);
 }
 
-/* Scaling effect on bang */
+/* Slight scaling effect on bang */
 .glass-container.bang {
-  transform: scale(1.08);
+  transform: scale(1.1);
 }
 
-/* Glass Image */
+/* The Glass Image */
 .glass-image {
   width: 100%;
   height: 100%;
   position: relative;
-  z-index: 2;
+  z-index: 2; /* Above the shockwave */
 }
 
-/* Shockwave Effect - Surrounding the container */
-.shockwave-container {
-  position: absolute;
-  width: 150%;
-  height: 150%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 0;
-}
-
+/* Shockwave Effect */
 .shockwave {
   position: absolute;
   width: 100%;
   height: 100%;
-  background: radial-gradient(circle, rgba(249, 248, 248, 0.5) 30%, transparent 70%);
+  border-radius: 20px;
+  background: radial-gradient(rgba(255, 255, 255, 0.4), transparent);
   opacity: 0;
-  border-radius: 50%;
-  transform: scale(0.5);
+  transform: scale(1);
   transition: transform 0.2s ease-out, opacity 0.2s ease-out;
-  filter: blur(20px);
+  z-index: 1; /* Behind the glass */
 }
 
-/* When bang happens, expand shockwave */
-.shockwave-container.active .shockwave {
-  opacity: 0.7;
-  transform: scale(1.8);
+/* When the bang happens, the shockwave expands and fades */
+.shockwave.active {
+  opacity: 0.5;
+  transform: scale(1.4);
 }
