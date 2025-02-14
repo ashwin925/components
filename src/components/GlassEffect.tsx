@@ -7,38 +7,29 @@ const images = [rect1, rect2];
 
 const GlassEffect = () => {
   const [index, setIndex] = useState(0);
-  const [scale, setScale] = useState(1);
-  const [shockwave, setShockwave] = useState(false);
+  const [isBanging, setIsBanging] = useState(false);
 
   useEffect(() => {
     const interval = setInterval(() => {
-      // Trigger the banging effect
-      setScale(1.15); 
-      setShockwave(true); // Activate shockwave
+      setIsBanging(true); // Start the effect
 
       setTimeout(() => {
-        setScale(1);
-        setShockwave(false); // Hide shockwave after effect
-        setIndex((prevIndex) => (prevIndex + 1) % images.length); 
-      }, 150); 
+        setIsBanging(false); // End the effect
+        setIndex((prevIndex) => (prevIndex + 1) % images.length); // Change image
+      }, 150); // Bang effect happens quickly
 
-    }, 1500); 
+    }, 1500); // Repeat every 1.5 seconds
 
     return () => clearInterval(interval);
   }, []);
 
   return (
-    <div className="glass-container">
+    <div className={`glass-container ${isBanging ? "bang" : ""}`}>
       {/* Shockwave Effect */}
-      <div className={`shockwave ${shockwave ? "active" : ""}`} />
-      
+      <div className={`shockwave ${isBanging ? "active" : ""}`} />
+
       {/* Glass Image */}
-      <img
-        src={images[index]}
-        alt="Glass Effect"
-        className="glass-image"
-        style={{ transform: `scale(${scale})` }}
-      />
+      <img src={images[index]} alt="Glass Effect" className="glass-image" />
     </div>
   );
 };
