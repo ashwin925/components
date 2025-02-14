@@ -18,7 +18,7 @@ const GlassEffect = () => {
       setTimeout(() => {
         setIsBanging(false);
         setIndex((prevIndex) => (prevIndex + 1) % images.length);
-      }, 100);
+      }, 120); // Short but powerful bang effect
     }, 1500);
 
     return () => clearInterval(interval);
@@ -27,7 +27,7 @@ const GlassEffect = () => {
   return (
     <div className="page-container">
       <div className="wrapper">
-        {/* Width & Height Controls */}
+        {/* Controls for Width & Height */}
         <div className="controls">
           <label>
             Width:
@@ -55,7 +55,7 @@ const GlassEffect = () => {
           className={`glass-container ${isBanging ? "bang" : ""}`}
           style={{ width: `${width}px`, height: `${height}px` }}
         >
-          {/* Shockwave Effect */}
+          {/* Shockwave Effect - Now coming from the container */}
           <div className={`shockwave ${isBanging ? "active" : ""}`} />
 
           {/* Glass Image */}

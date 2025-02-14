@@ -1,5 +1,5 @@
 /* Full Viewport Background with Gradient */
-/* .page-container {
+.page-container {
   width: 100vw;
   height: 100vh;
   display: flex;
@@ -7,9 +7,9 @@
   align-items: center;
   background: linear-gradient(135deg, #000428, #004e92);
   overflow: hidden;
-} */
+}
 
-/* Wrapper for layout */
+/* Wrapper */
 .wrapper {
   display: flex;
   flex-direction: column;
@@ -39,12 +39,12 @@ input[type="range"] {
   border-radius: 12px;
   transition: transform 0.1s ease-out;
   overflow: hidden;
-  box-shadow: 0 0 10px rgba(98, 93, 93, 0.1);
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
 }
 
 /* Scaling effect on bang */
 .glass-container.bang {
-  transform: scale(1.05);
+  transform: scale(1.08);
 }
 
 /* Glass Image */
@@ -55,22 +55,22 @@ input[type="range"] {
   z-index: 2;
 }
 
-/* SHOCKWAVE EFFECT */
+/* Shockwave Effect - From Container */
 .shockwave {
   position: absolute;
-  width: 200%;
-  height: 200%;
-  background: radial-gradient(circle, rgba(255, 255, 255, 0.4) 10%, transparent 70%);
+  width: 120%;
+  height: 120%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.5) 10%, transparent 70%);
   opacity: 0;
   border-radius: 50%;
   transform: scale(0.5);
   transition: transform 0.2s ease-out, opacity 0.2s ease-out;
   z-index: 1;
-  filter: blur(10px);
+  filter: blur(15px);
 }
 
 /* When bang happens, expand shockwave */
 .shockwave.active {
-  opacity: 0.6;
-  transform: scale(1.8);
+  opacity: 0.7;
+  transform: scale(2);
 }
