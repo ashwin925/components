@@ -55,8 +55,10 @@ const GlassEffect = () => {
           className={`glass-container ${isBanging ? "bang" : ""}`}
           style={{ width: `${width}px`, height: `${height}px` }}
         >
-          {/* Shockwave Effect - Now coming from the container */}
-          <div className={`shockwave ${isBanging ? "active" : ""}`} />
+          {/* Shockwave Effect - Surrounding the container */}
+          <div className={`shockwave-container ${isBanging ? "active" : ""}`}>
+            <div className="shockwave"></div>
+          </div>
 
           {/* Glass Image */}
           <img src={images[index]} alt="Glass Effect" className="glass-image" />
