@@ -8,6 +8,28 @@
   overflow: hidden;
 }
 
+.controls {
+  margin-bottom: 20px;
+  display: flex;
+  gap: 15px;
+}
+
+.controls label {
+  color: white;
+  font-size: 16px;
+}
+
+.controls input {
+  margin-left: 5px;
+  padding: 5px;
+  width: 60px;
+  font-size: 14px;
+  text-align: center;
+  border: 1px solid white;
+  border-radius: 5px;
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+}
 .glass-container {
   display: flex;
   justify-content: center;
