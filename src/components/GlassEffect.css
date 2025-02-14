@@ -1,22 +1,20 @@
-/* Full Page Gradient Background */
+/* Full Viewport Gradient Background */
 .page-container {
+  width: 100vw;
+  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
-  background: linear-gradient(135deg, #000428, #004e92); /* Black & Blue Gradient */
+  background: linear-gradient(135deg, #000428, #004e92);
+  overflow: hidden;
 }
 
-/* Wrapper to Center Everything */
+/* Wrapper to keep everything neat */
 .wrapper {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 20px;
-  background: rgba(255, 255, 255, 0.1); /* Light transparency for aesthetics */
-  padding: 20px;
-  border-radius: 12px;
-  box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
 }
 
 /* Controls for Width & Height */
@@ -34,18 +32,19 @@ input[type="range"] {
 
 /* Glass Container */
 .glass-container {
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
-  position: relative;
-  transition: transform 0.15s cubic-bezier(0.3, 1.5, 0.7, 1);
-  overflow: hidden;
   border-radius: 12px;
+  transition: transform 0.1s ease-out;
+  overflow: hidden;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
 }
 
 /* Scaling effect on bang */
 .glass-container.bang {
-  transform: scale(1.08);
+  transform: scale(1.05);
 }
 
 /* Glass Image */
@@ -53,35 +52,35 @@ input[type="range"] {
   width: 100%;
   height: 100%;
   position: relative;
-  z-index: 2; /* Above the shockwave */
+  z-index: 2;
 }
 
 /* Shockwave Effect */
 .shockwave {
   position: absolute;
-  width: 100%;
-  height: 100%;
-  border-radius: 12px;
-  background: radial-gradient(rgba(255, 255, 255, 0.3), transparent);
+  width: 120%;
+  height: 120%;
+  border-radius: 50%;
+  background: radial-gradient(rgba(255, 255, 255, 0.2), transparent);
   opacity: 0;
-  transform: scale(1);
-  transition: transform 0.15s ease-out, opacity 0.15s ease-out;
-  z-index: 1; /* Behind the glass */
+  transform: scale(0.5);
+  transition: transform 0.2s ease-out, opacity 0.2s ease-out;
+  z-index: 1;
 }
 
 /* Secondary shockwave for extra impact */
 .shockwave.secondary {
-  transition: transform 0.25s ease-out, opacity 0.25s ease-out;
+  transition: transform 0.3s ease-out, opacity 0.3s ease-out;
 }
 
 /* Expanding shockwave when banging */
 .shockwave.active {
   opacity: 0.5;
-  transform: scale(1.4);
+  transform: scale(1.5);
 }
 
 /* Secondary shockwave for layered effect */
 .shockwave.secondary.active {
   opacity: 0.3;
-  transform: scale(1.8);
+  transform: scale(2);
 }

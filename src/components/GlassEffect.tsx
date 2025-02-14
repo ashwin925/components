@@ -13,14 +13,14 @@ const GlassEffect = () => {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setIsBanging(true); // Start the effect
+      setIsBanging(true);
 
       setTimeout(() => {
-        setIsBanging(false); // End the effect
-        setIndex((prevIndex) => (prevIndex + 1) % images.length); // Change image
-      }, 120); // Bang effect duration
+        setIsBanging(false);
+        setIndex((prevIndex) => (prevIndex + 1) % images.length);
+      }, 100); // Quick, sharp effect
 
-    }, 1500); // Repeat every 1.5 seconds
+    }, 1500); // Every 1.5s
 
     return () => clearInterval(interval);
   }, []);
