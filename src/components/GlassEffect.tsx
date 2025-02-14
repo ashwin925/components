@@ -26,26 +26,6 @@ const GlassEffect = () => {
 
   return (
     <div className="page-container">
-      {/* Controls for Width & Height */}
-      <div className="controls">
-        <label>
-          Width:
-          <input
-            type="number"
-            value={width}
-            onChange={(e) => setWidth(Number(e.target.value))}
-          />
-        </label>
-        <label>
-          Height:
-          <input
-            type="number"
-            value={height}
-            onChange={(e) => setHeight(Number(e.target.value))}
-          />
-        </label>
-      </div>
-
       <div
         className={`glass-container ${isBanging ? "bang" : ""}`}
         style={{ width: `${width}px`, height: `${height}px` }}
@@ -55,6 +35,32 @@ const GlassEffect = () => {
 
         {/* Glass Image */}
         <img src={images[index]} alt="Glass Effect" className="glass-image" />
+      </div>
+
+      {/* Sliders for Width & Height */}
+      <div className="slider-container">
+        <div className="slider">
+          <label>Width</label>
+          <input
+            type="range"
+            min="100"
+            max="600"
+            value={width}
+            onChange={(e) => setWidth(Number(e.target.value))}
+          />
+          <span>{width}px</span>
+        </div>
+        <div className="slider">
+          <label>Height</label>
+          <input
+            type="range"
+            min="200"
+            max="800"
+            value={height}
+            onChange={(e) => setHeight(Number(e.target.value))}
+          />
+          <span>{height}px</span>
+        </div>
       </div>
     </div>
   );
