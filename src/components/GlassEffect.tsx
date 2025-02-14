@@ -2,9 +2,8 @@ import React, { useEffect, useState } from "react";
 import "./GlassEffect.css";
 import rect1 from "../images/rect1.webp";
 import rect2 from "../images/rect2.webp";
-import rect3 from "../images/rect3.webp";
 
-const images = [rect1, rect2, rect3];
+const images = [rect1, rect2];
 
 const GlassEffect = () => {
   const [index, setIndex] = useState(0);
