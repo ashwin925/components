@@ -1,11 +1,11 @@
 "use client";
 import React from "react";
-import IceRevealCard from "./components/ice-reveal-card.tsx";
+import GlassEffect from './components/GlassEffect.tsx';
 
 function App() {
   return (
-    <div style={{ display: "flex", justifyContent: "center", alignItems: "center", height: "100vh", background: "#1e1e1e" }}>
-      <IceRevealCard />
+    <div style={{ display: "flex", justifyContent: "center", alignItems: "center", background: "#1e1e1e" }}>
+      <GlassEffect />
     </div>
   );
 }

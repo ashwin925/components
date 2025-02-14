@@ -1,0 +1,14 @@
+.glass-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  background-color: black;
+}
+
+.glass-image {
+  width: 200px;
+  height: 400px;
+  transition: transform 0.15s cubic-bezier(0.3, 1.5, 0.7, 1); /* Fast hit & snap back */
+}
