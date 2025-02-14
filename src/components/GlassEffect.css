@@ -1,20 +1,38 @@
+/* Full Page Gradient Background */
+.page-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: linear-gradient(135deg, #000428, #004e92); /* Black & Blue Gradient */
+}
+
+/* Wrapper to Center Everything */
 .wrapper {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 20px;
+  background: rgba(255, 255, 255, 0.1); /* Light transparency for aesthetics */
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
 }
 
+/* Controls for Width & Height */
 .controls {
   display: flex;
   gap: 20px;
   font-size: 14px;
+  color: white;
 }
 
 input[type="range"] {
   margin-left: 10px;
+  cursor: pointer;
 }
 
+/* Glass Container */
 .glass-container {
   display: flex;
   justify-content: center;
@@ -27,7 +45,7 @@ input[type="range"] {
 
 /* Scaling effect on bang */
 .glass-container.bang {
-  transform: scale(1.1);
+  transform: scale(1.08);
 }
 
 /* Glass Image */
@@ -44,26 +62,4 @@ input[type="range"] {
   width: 100%;
   height: 100%;
   border-radius: 12px;
-  background: radial-gradient(rgba(255, 255, 255, 0.4), transparent);
-  opacity: 0;
-  transform: scale(1);
-  transition: transform 0.2s ease-out, opacity 0.2s ease-out;
-  z-index: 1; /* Behind the glass */
-}
-
-/* Secondary shockwave for extra impact */
-.shockwave.secondary {
-  transition: transform 0.3s ease-out, opacity 0.3s ease-out;
-}
-
-/* Expanding shockwave when banging */
-.shockwave.active {
-  opacity: 0.5;
-  transform: scale(1.4);
-}
-
-/* Secondary shockwave for layered effect */
-.shockwave.secondary.active {
-  opacity: 0.3;
-  transform: scale(1.8);
-}
+  background

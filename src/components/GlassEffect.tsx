@@ -18,7 +18,7 @@ const GlassEffect = () => {
       setTimeout(() => {
         setIsBanging(false); // End the effect
         setIndex((prevIndex) => (prevIndex + 1) % images.length); // Change image
-      }, 150); // Bang effect duration
+      }, 120); // Bang effect duration
 
     }, 1500); // Repeat every 1.5 seconds
 
@@ -26,41 +26,43 @@ const GlassEffect = () => {
   }, []);
 
   return (
-    <div className="wrapper">
-      {/* Width & Height Controls */}
-      <div className="controls">
-        <label>
-          Width:
-          <input
-            type="range"
-            min="100"
-            max="400"
-            value={width}
-            onChange={(e) => setWidth(e.target.value)}
-          />
-        </label>
-        <label>
-          Height:
-          <input
-            type="range"
-            min="200"
-            max="600"
-            value={height}
-            onChange={(e) => setHeight(e.target.value)}
-          />
-        </label>
-      </div>
+    <div className="page-container">
+      <div className="wrapper">
+        {/* Width & Height Controls */}
+        <div className="controls">
+          <label>
+            Width:
+            <input
+              type="range"
+              min="100"
+              max="400"
+              value={width}
+              onChange={(e) => setWidth(e.target.value)}
+            />
+          </label>
+          <label>
+            Height:
+            <input
+              type="range"
+              min="200"
+              max="600"
+              value={height}
+              onChange={(e) => setHeight(e.target.value)}
+            />
+          </label>
+        </div>
 
-      <div
-        className={`glass-container ${isBanging ? "bang" : ""}`}
-        style={{ width: `${width}px`, height: `${height}px` }}
-      >
-        {/* Shockwave Effect */}
-        <div className={`shockwave ${isBanging ? "active" : ""}`} />
-        <div className={`shockwave secondary ${isBanging ? "active" : ""}`} />
+        <div
+          className={`glass-container ${isBanging ? "bang" : ""}`}
+          style={{ width: `${width}px`, height: `${height}px` }}
+        >
+          {/* Shockwave Effect */}
+          <div className={`shockwave ${isBanging ? "active" : ""}`} />
+          <div className={`shockwave secondary ${isBanging ? "active" : ""}`} />
 
-        {/* Glass Image */}
-        <img src={images[index]} alt="Glass Effect" className="glass-image" />
+          {/* Glass Image */}
+          <img src={images[index]} alt="Glass Effect" className="glass-image" />
+        </div>
       </div>
     </div>
   );
