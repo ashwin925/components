@@ -1,86 +1,41 @@
-/* Full Viewport Gradient Background */
-.page-container {
-  width: 100vw;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: linear-gradient(135deg, #000428, #004e92);
-  overflow: hidden;
-}
-
-/* Wrapper to keep everything neat */
-.wrapper {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 20px;
-}
-
-/* Controls for Width & Height */
-.controls {
-  display: flex;
-  gap: 20px;
-  font-size: 14px;
-  color: white;
-}
-
-input[type="range"] {
-  margin-left: 10px;
-  cursor: pointer;
-}
-
-/* Glass Container */
 .glass-container {
-  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
-  border-radius: 12px;
-  transition: transform 0.1s ease-out;
-  overflow: hidden;
-  box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+  width: 220px; /* Match the glass size */
+  height: 420px;
+  position: relative;
+  transition: transform 0.15s cubic-bezier(0.3, 1.5, 0.7, 1);
 }
 
-/* Scaling effect on bang */
+/* Slight scaling effect on bang */
 .glass-container.bang {
-  transform: scale(1.05);
+  transform: scale(1.1);
 }
 
-/* Glass Image */
+/* The Glass Image */
 .glass-image {
   width: 100%;
   height: 100%;
   position: relative;
-  z-index: 2;
+  z-index: 2; /* Above the shockwave */
 }
 
-/* Shockwave Effect */
-.shockwave {
+/* Circular Shockwave Effect */
+.shockwave-circle {
   position: absolute;
-  width: 120%;
-  height: 120%;
+  width: 50px;
+  height: 50px;
+  background: radial-gradient(rgba(255, 255, 255, 0.5), transparent);
   border-radius: 50%;
-  background: radial-gradient(rgba(255, 255, 255, 0.2), transparent);
   opacity: 0;
-  transform: scale(0.5);
+  transform: scale(1);
   transition: transform 0.2s ease-out, opacity 0.2s ease-out;
-  z-index: 1;
-}
-
-/* Secondary shockwave for extra impact */
-.shockwave.secondary {
-  transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+  z-index: 1; /* Behind the glass */
 }
 
 /* Expanding shockwave when banging */
-.shockwave.active {
-  opacity: 0.5;
-  transform: scale(1.5);
-}
-
-/* Secondary shockwave for layered effect */
-.shockwave.secondary.active {
-  opacity: 0.3;
-  transform: scale(2);
+.shockwave-circle.active {
+  opacity: 0.4;
+  transform: scale(4);
 }
