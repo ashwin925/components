@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './CharacterReveal.css'; 
+import superman1 from '../images/superman1.webp';
 
 const CardReveal = () => {
   // Track the overall animation state (idle, running, or finished)
@@ -17,7 +18,7 @@ const CardReveal = () => {
     setAnimationState('running');
 
     // STEP 1: Fly in from the left to the center of the card (using image1)
-    setCharacterImage('image1.png');
+    setCharacterImage(superman1);
     setCharacterClass('fly-in'); // CSS will move character from offscreen left to center
     // Wait for fly-in to complete
     setTimeout(() => {
