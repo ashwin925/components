@@ -28,7 +28,7 @@ const GlassEffect = () => {
   }, [isRunning]);
 
   return (
-    <div className="page-container">
+    <div className={`page-container ${isBanging ? "jitter" : ""}`}>
       <div
         className={`glass-container ${isBanging ? "bang" : ""}`}
         style={{

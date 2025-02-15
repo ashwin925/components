@@ -1,13 +1,31 @@
+/* Full-Page Container as a Real Container with a Border */
 .page-container {
   width: 100vw;
   height: 100vh;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   background: linear-gradient(135deg, #011a31, #011a31, #011a31); /* Dark Blue Gradient */
   overflow: hidden;
+  border: 4px solid #00c3ff;  /* New border for the container */
+  box-sizing: border-box;
 }
 
+/* Jitter Animation when Bang Happens */
+.page-container.jitter {
+  animation: jitter 0.2s ease-out;
+}
+
+@keyframes jitter {
+  0% { transform: translate(0, 0); }
+  25% { transform: translate(-5px, 5px); }
+  50% { transform: translate(5px, -5px); }
+  75% { transform: translate(-5px, 5px); }
+  100% { transform: translate(0, 0); }
+}
+
+/* Glass Container */
 .glass-container {
   display: flex;
   justify-content: center;
@@ -31,13 +49,13 @@
   z-index: 2; /* Above the shockwave */
 }
 
-/* Shockwave Effect */
+/* Shockwave Effect (Unchanged) */
 .shockwave {
   position: absolute;
   width: 100%;
   height: 100%;
   border-radius: 20px;
-  background: radial-gradient(rgba(255, 255, 255, 0.4), transparent);
+  background: radial-gradient(rgba(255, 255, 255, 0.5), transparent);
   opacity: 0;
   transform: scale(1);
   transition: transform 0.2s ease-out, opacity 0.2s ease-out;
@@ -50,16 +68,17 @@
   transform: scale(1.4);
 }
 
+/* Slider & Button Container */
 .slider-container {
   display: flex;
   justify-content: center;
+  align-items: center;
   gap: 20px;
   margin-top: 20px;
   background: rgba(255, 255, 255, 0.1);
   padding: 10px 20px;
   border-radius: 10px;
   backdrop-filter: blur(5px);
-  margin-left: 50px;
 }
 
 /* Individual Slider */
@@ -95,6 +114,7 @@
   font-weight: bold;
 }
 
+/* Stop/Start Button */
 .toggle-btn {
   background: #00c3ff;
   color: white;
