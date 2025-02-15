@@ -8,7 +8,7 @@
   align-items: center;
   background: linear-gradient(135deg, #011a31, #011a31, #011a31); /* Dark Blue Gradient */
   overflow: hidden;
-  border: 4px solid #00c3ff;  /* New border for the container */
+  border: 4px solid #00c3ff; 
   box-sizing: border-box;
 }
 
