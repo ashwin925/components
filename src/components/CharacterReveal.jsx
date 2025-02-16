@@ -3,11 +3,8 @@ import './CharacterReveal.css';
 import superman1 from '../images/superman1.webp';
 
 const CardReveal = () => {
-  // Track the overall animation state (idle, running, or finished)
   const [animationState, setAnimationState] = useState('idle');
-  // Current image source for the character
   const [characterImage, setCharacterImage] = useState(null);
-  // CSS classes to control character and content positions/animations
   const [characterClass, setCharacterClass] = useState('');
   const [contentClass, setContentClass] = useState('');
 
