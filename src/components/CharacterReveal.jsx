@@ -11,6 +11,7 @@ const CardReveal = () => {
   // This function controls the animation timeline
   const handleClick = () => {
     if (animationState !== 'idle') return; // avoid restarting while in progress
+    // fot steaojoefd
 
     setAnimationState('running');
 
