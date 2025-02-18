@@ -6,10 +6,14 @@ import GlassPanel from './components/glassDiv.jsx';
 
 function App() {
   return (
+    <div>
     <div style={{ display: "flex", justifyContent: "center", alignItems: "center", background: "#1e1e1e" }}>
       {/* <GlassEffect /> */}
       {/* <CardReveal /> */}
-      <GlassPanel />
+    </div>
+          <div>
+            <GlassPanel />
+          </div>
     </div>
   );
 }

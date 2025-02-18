@@ -1,12 +1,12 @@
 import React from "react";
-import "./glassDiv.css"; 
+import "./glassDiv.css";
 
-const GlassPanel = () => {
+function GlassPanel() {
   return (
     <div className="glass-panel">
-      <h1>hi</h1>
+      {/* Your content here */}
     </div>
   );
-};
+}
 
 export default GlassPanel;
