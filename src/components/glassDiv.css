@@ -2,14 +2,14 @@ body{
   background-color: rgb(255, 255, 255);
 }
 .glass-panel {
-  width: 1180px;
-  height: 530px;
-  margin-left: 20px;
-  margin-top: 20px;
+  width: 950px;
+  height: 500px;
+  margin-left: 140px;
+  margin-top: 30px;
   position: relative;
   border-radius: 10px;
-  background: linear-gradient(to bottom, rgba(0, 255, 255, 0.3), rgba(0, 229, 255, 0.9), rgba(0, 255, 255, 0.3));
-  border: 4px solid rgba(0, 229, 255, 0.8);
+  background: linear-gradient(to bottom, rgba(0, 255, 255, 0.3), rgba(143, 244, 255, 0.9), rgba(0, 255, 255, 0.3));
+  border: 3px solid rgba(0, 229, 255, 0.8);
   outline: 3px solid rgba(0, 255, 255, 0.5);
 
   box-shadow:
@@ -19,7 +19,7 @@ body{
     inset 0 0 30px rgba(0, 255, 255, 0.2); /* Smooth glass-like depth */
 }
 
-.glass-panel::before {
+/* .glass-panel::before {
   content: "";
   position: absolute;
   top: -6px;
@@ -33,5 +33,5 @@ body{
     0 0 30px rgba(0, 229, 255, 0.4),
     0 0 60px rgba(0, 255, 255, 0.2);
   opacity: 0.8;
-}
+} */
 

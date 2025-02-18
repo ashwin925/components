@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import './CharacterReveal.css'; 
-import superman1 from '../images/superman1.webp';
+import superman1 from '../images/superman8.png';
+import superman2 from '../images/superman9.png';
+import superman3 from '../images/superman10.png';
+import superman4 from '../images/superman11.png';
 
 const CardReveal = () => {
   const [animationState, setAnimationState] = useState('idle');
@@ -8,64 +11,53 @@ const CardReveal = () => {
   const [characterClass, setCharacterClass] = useState('');
   const [contentClass, setContentClass] = useState('');
 
-  // This function controls the animation timeline
   const handleClick = () => {
-    if (animationState !== 'idle') return; // avoid restarting while in progress
-    // fot steaojoefd
-
+    if (animationState !== 'idle') return;
     setAnimationState('running');
 
-    // STEP 1: Fly in from the left to the center of the card (using image1)
-    setCharacterImage(superman1);
-    setCharacterClass('fly-in'); // CSS will move character from offscreen left to center
-    // Wait for fly-in to complete
+    setCharacterImage(superman8);
+    setCharacterClass('fly-in-left');
+    
     setTimeout(() => {
-      // STEP 2: Briefly change to the hi signal image (image2)
-      setCharacterImage('image2.png');
+      setCharacterImage(superman11);
+      setCharacterClass('scale-up');
+      
       setTimeout(() => {
-        // Revert back to flying image (image1) and continue toward the hidden content area
-        setCharacterImage('image1.png');
-        setCharacterClass('fly-to-content'); // CSS will move character toward the offscreen content
+        setCharacterImage(superman8);
+        setCharacterClass('fly-out-left');
+        
         setTimeout(() => {
-          // STEP 3: At the offscreen content, change to pushing pose (image3)
-          setCharacterImage('image3.png');
-          // Animate the content sliding into the card container
-          setContentClass('slide-in');
+          setCharacterImage(superman10);
+          setCharacterClass('fly-in-top-right');
+          
           setTimeout(() => {
-            // STEP 4: Once the content is in place, change to a “done” pose (image4)
-            setCharacterImage('image4.png');
+            setContentClass('slide-in');
+            setCharacterImage(superman2);
+            setCharacterClass('stay');
+            
             setTimeout(() => {
-              // STEP 5: After a brief pause, switch to the flying-back image (image5)
-              // and animate the character flying off to the left
-              setCharacterImage('image5.png');
-              setCharacterClass('fly-out');
+              setCharacterImage(superman3);
+              setCharacterClass('fly-out-left');
               setTimeout(() => {
-                // Animation complete; update state as needed (or reset to idle)
-                setAnimationState('finished');
-              }, 1000); // Duration for flying back
-            }, 1000); // Pause before flying back
-          }, 1000); // Duration for content slide-in & push effect
-        }, 1000); // Duration for character to fly to content location
-      }, 500); // Duration for the hi signal image
-    }, 1000); // Duration for the initial fly-in
+                setAnimationState('idle');
+              }, 1000);
+            }, 1500);
+          }, 2000);
+        }, 1000);
+      }, 1500);
+    }, 1000);
   };
 
   return (
     <div className="page">
-      <div className="card" onClick={handleClick}>
-        Click me
-        <div className={`content ${contentClass}`}>
-          {/* This is the content that will be revealed */}
-          Hidden Content
-        </div>
+      <div className="container" onClick={handleClick}>
+        Click Me
       </div>
-      {/* Only show the character when the animation is in progress */}
+      <div className={`content-container ${contentClass}`}>
+        Hidden Content
+      </div>
       {animationState !== 'idle' && (
-        <img
-          src={characterImage}
-          className={`character ${characterClass}`}
-          alt="Character"
-        />
+        <img src={characterImage} className={`character ${characterClass}`} alt="Character" />
       )}
     </div>
   );

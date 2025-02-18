@@ -1,11 +1,11 @@
 import React from "react";
 import "./glassDiv.css";
+import Header from "./header";
 
 function GlassPanel() {
   return (
     <div className="glass-panel">
-      
-      {/* Your content here */}
+      <Header />
     </div>
   );
 }
