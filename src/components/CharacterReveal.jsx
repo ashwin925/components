@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import './CharacterReveal.css'; 
-import superman1 from '../images/superman8.png';
-import superman2 from '../images/superman9.png';
-import superman3 from '../images/superman10.png';
-import superman4 from '../images/superman11.png';
+import superman8 from '../images/superman8.png';
+import superman9 from '../images/superman9.png';
+import superman10 from '../images/superman10.png';
+import superman11 from '../images/superman11.png';
 
 const CardReveal = () => {
   const [animationState, setAnimationState] = useState('idle');
@@ -32,11 +32,11 @@ const CardReveal = () => {
           
           setTimeout(() => {
             setContentClass('slide-in');
-            setCharacterImage(superman2);
+            setCharacterImage(superman9);
             setCharacterClass('stay');
             
             setTimeout(() => {
-              setCharacterImage(superman3);
+              setCharacterImage(superman8);
               setCharacterClass('fly-out-left');
               setTimeout(() => {
                 setAnimationState('idle');
