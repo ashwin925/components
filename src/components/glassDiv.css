@@ -1,9 +1,11 @@
 .glass-panel {
-  width: 300px;
+  width: 600px;
   height: 500px;
+  margin-left: 300px;
+  margin-top: 30px;
   position: relative;
   border-radius: 10px;
-  background: linear-gradient(to bottom, rgba(0, 191, 255, 0.4), rgba(0, 64, 191, 0.6));
+  background: linear-gradient(to bottom, rgba(0, 255, 255, 0.3), rgba(0, 229, 255, 0.9), rgba(0, 255, 255, 0.3)) ;
   border: 4px solid rgba(0, 191, 255, 0.8);
   box-shadow:
     0 0 15px rgba(0, 191, 255, 0.7),
