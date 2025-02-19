@@ -1,63 +1,48 @@
-import React, { useEffect, useState } from "react";
+// FracturedGlass.js
+import React, { useEffect, useRef } from "react";
+import { useGLTF } from "@react-three/drei";
 import { Physics, RigidBody } from "@react-three/rapier";
+import { useFrame } from "@react-three/fiber";
+import { gsap } from "gsap";
 
-export default function ShatteringGlass({ onComplete }) {
-  const [shards, setShards] = useState([]);
+export default function FracturedGlass({ onComplete }) {
+  // Load your fractured glass model
+  const { scene } = useGLTF("/models/fracturedGlass.glb");
+  const shardsRef = useRef([]);
 
   useEffect(() => {
-    // Create 100 shards with random positions, rotations, and velocities.
-    const newShards = Array.from({ length: 100 }).map(() => ({
-      // Position shards within the glass area (spread across the 2x2 plane)
-      position: [
-        (Math.random() - 0.5) * 2, 
-        (Math.random() - 0.5) * 2, 
-        0
-      ],
-      // Random rotation for each shard
-      rotation: [
-        Math.random() * Math.PI,
-        Math.random() * Math.PI,
-        Math.random() * Math.PI,
-      ],
-      // High velocity in all directions (simulate an explosive shatter)
-      velocity: [
-        (Math.random() - 0.5) * 8, 
-        (Math.random() - 0.5) * 8, 
-        (Math.random() - 0.5) * 8,
-      ],
-    }));
-    setShards(newShards);
+    // Assume your model contains multiple children (shards)
+    // For each shard, add physics and an initial impulse.
+    scene.traverse((child) => {
+      if (child.isMesh) {
+        // Wrap each shard into a physics RigidBody
+        // We'll keep a reference for applying impulses
+        shardsRef.current.push(child);
+      }
+    });
 
-    // Call onComplete after a short delay to reveal the content underneath.
-    const timer = setTimeout(() => {
-      onComplete();
-    }, 1500);
-
-    return () => clearTimeout(timer);
-  }, [onComplete]);
+    // Wait one frame to ensure physics is initialized
+    setTimeout(() => {
+      shardsRef.current.forEach((shard) => {
+        // Apply an explosion-like impulse
+        // You can adjust these multipliers for a stronger effect.
+        const impulse = {
+          x: (Math.random() - 0.5) * 12,
+          y: (Math.random() - 0.5) * 12,
+          z: (Math.random() - 0.5) * 12,
+        };
+        // If you wrap your shards in <RigidBody>, you could call applyImpulse.
+        // Here, we simulate it with a GSAP animation if physics isn’t directly available:
+        gsap.to(shard.position, { x: shard.position.x + impulse.x, y: shard.position.y + impulse.y, z: shard.position.z + impulse.z, duration: 1, ease: "power2.out" });
+      });
+      // After the shattering animation, call onComplete to reveal content.
+      setTimeout(onComplete, 1500);
+    }, 100);
+  }, [scene, onComplete]);
 
   return (
-    <Physics gravity={[0, -9.81, 0]}>
-      {shards.map((shard, index) => (
-        <RigidBody
-          key={index}
-          colliders="hull"
-          position={shard.position}
-          rotation={shard.rotation}
-          linearVelocity={shard.velocity}
-          angularDamping={0.5}
-          linearDamping={0.2}
-        >
-          <mesh>
-            <planeGeometry args={[0.3, 0.3]} />
-            <meshStandardMaterial
-              color="#00BFFF" // bright blue color (DeepSkyBlue)
-              transparent
-              opacity={0.9}
-            />
-          </mesh>
-        </RigidBody>
-      ))}
-    </Physics>
+    <group dispose={null}>
+      <primitive object={scene} />
+    </group>
   );
 }
