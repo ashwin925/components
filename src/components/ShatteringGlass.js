@@ -42,9 +42,12 @@ export default function ShatteringGlass({ onComplete }) {
             color: "#00BFFF",
             metalness: 1.0,
             roughness: 0.0,
+            clearcoat: 1.0,  // full clear coat for extra reflections
+            clearcoatRoughness: 0.0,
+            emissive: "#00BFFF", 
+            emissiveIntensity: 1.5,    // stronger emissive intensity
             opacity: 0.98,
             transparent: true,
-            emissive: "#00FFF",  // same as base color
           }
         : {
             color: "#00BFFF",
