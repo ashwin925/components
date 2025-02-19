@@ -11,15 +11,15 @@ import { gsap } from "gsap";
 const images = [rect1, rect3, rect4, rect2];
 
 //////////////////////////
-// Glass Shatter Effect Component
+// Glass Shatter Effect Component (Full-Screen Overlay)
 //////////////////////////
 
-function GlassShatterEffect({ width, height, onComplete }) {
+function GlassShatterEffect({ onComplete }) {
   const [shards, setShards] = useState([]);
 
   useEffect(() => {
-    // Create an array of 120 shards with randomized properties.
-    // Their positions are normalized within a 2x2 area.
+    // Create 120 shards with randomized properties.
+    // Positions are generated in a normalized 2x2 space.
     const newShards = Array.from({ length: 120 }).map(() => {
       const pos = [
         (Math.random() - 0.5) * 2, // x in [-1,1]
@@ -31,13 +31,13 @@ function GlassShatterEffect({ width, height, onComplete }) {
         Math.random() * Math.PI,
         Math.random() * Math.PI,
       ];
-      // Randomize shard sizes (between 0.1 and 0.5)
+      // Random shard sizes between 0.1 and 0.5.
       const shardWidth = 0.1 + Math.random() * 0.4;
       const shardHeight = 0.1 + Math.random() * 0.4;
-      // Set minimal lateral drift; all shards travel forward (positive z)
+      // Minimal lateral drift; shards fly forward (positive z) toward the viewer.
       const xVel = (Math.random() - 0.5) * 0.5;
       const yVel = (Math.random() - 0.5) * 0.5;
-      const zVel = 3 + Math.random() * 2; // forward burst toward viewer
+      const zVel = 3 + Math.random() * 2;
       const velocity = [xVel, yVel, zVel];
       const angularVelocity = [
         (Math.random() - 0.5) * 4,
@@ -45,11 +45,11 @@ function GlassShatterEffect({ width, height, onComplete }) {
         (Math.random() - 0.5) * 4,
       ];
 
-      // Base dark material properties
-      const baseColor = "#001F3F"; // dark blue/blackish
+      // Base dark material properties.
+      const baseColor = "#001F3F";
       const baseEmissiveIntensity = 0.2;
       const baseClearcoat = 0.8;
-      // Randomly flag ~30% of shards for a flash effect.
+      // Randomly flag ~30% of shards for an enhanced flash effect.
       const isFlash = Math.random() < 0.3;
       const materialProps = {
         color: baseColor,
@@ -77,22 +77,21 @@ function GlassShatterEffect({ width, height, onComplete }) {
 
     setShards(newShards);
 
-    // Allow the shattering effect to play for 2000ms, then call onComplete.
+    // Let the shattering effect play for 2000ms, then trigger onComplete.
     const timer = setTimeout(() => {
       onComplete();
     }, 2000);
-
     return () => clearTimeout(timer);
   }, [onComplete]);
 
-  // Inner Shard component with flash animation using GSAP.
+  // Inner Shard component with flash animation.
   function Shard({ pos, rot, width, height, velocity, angularVelocity, materialProps, flash }) {
     const meshRef = React.useRef();
 
     useEffect(() => {
       if (flash && meshRef.current) {
         const tl = gsap.timeline({ repeat: 1, yoyo: true });
-        const delay = Math.random() * 0.5; // stagger the flash start time
+        const delay = Math.random() * 0.5; // Stagger flashes naturally.
         tl.delay(delay)
           .to(meshRef.current.material, {
             emissiveIntensity: 3.0,
@@ -134,7 +133,8 @@ function GlassShatterEffect({ width, height, onComplete }) {
   }
 
   return (
-    <Canvas style={{ width: `${width}px`, height: `${height}px` }}>
+    // Render a full-screen Canvas overlay.
+    <Canvas style={{ position: "fixed", top: 0, left: 0, width: "100vw", height: "100vh", pointerEvents: "none", zIndex: 999 }}>
       <Physics gravity={[0, 0, 0]}>
         {shards.map((shard, index) => (
           <Shard key={index} {...shard} />
@@ -158,7 +158,7 @@ const GlassEffect = () => {
   const [isShattered, setIsShattered] = useState(false); // When true, show shatter effect
   const [showContent, setShowContent] = useState(false); // Underlying content visibility
 
-  // Image cycling: change image every 1500ms.
+  // Cycle through 4 images (index 0 → 1 → 2 → 3) every 1500ms.
   useEffect(() => {
     if (!isRunning || isShattered) return;
 
@@ -167,12 +167,14 @@ const GlassEffect = () => {
       setTimeout(() => {
         setIsBanging(false);
         setIndex((prevIndex) => {
-          // If current image is the fourth image (index 3), trigger shatter.
-          if (prevIndex === 3) {
+          const nextIndex = (prevIndex + 1) % images.length;
+          // When the fourth image (index 3) is reached, trigger shatter.
+          if (nextIndex === 0 && prevIndex === 3) {
+            // Keep image 3 on display while shattering.
             setIsShattered(true);
-            return prevIndex; // keep displaying image 3 during shatter
+            return 3;
           }
-          return (prevIndex + 1) % images.length;
+          return nextIndex;
         });
       }, 150);
     }, 1500);
@@ -182,7 +184,7 @@ const GlassEffect = () => {
 
   return (
     <div className={`page-container ${isBanging ? "jitter" : ""}`}>
-      {/* Underlying content container (initially hidden) */}
+      {/* Underlying content container, initially hidden */}
       <div
         className="content"
         style={{
@@ -201,12 +203,12 @@ const GlassEffect = () => {
       </div>
 
       {isShattered ? (
-        // When shattered, render the shatter effect in the same container.
+        // When shattered, render the full-screen shatter effect overlay.
         <GlassShatterEffect
           width={width}
           height={height}
           onComplete={() => {
-            // Once shatter completes, reveal content for 2 seconds, then reset.
+            // After shatter completes, reveal content for 2 seconds, then reset.
             setIsShattered(false);
             setShowContent(true);
             setTimeout(() => {
