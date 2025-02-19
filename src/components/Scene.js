@@ -2,7 +2,7 @@ import { Canvas } from "@react-three/fiber";
 import { useState } from "react";
 import Glass from "./Glass";
 import ShatteringGlass from "./ShatteringGlass";
-import Content from "./Content";
+// import Content from "./Content";
 
 export default function Scene() {
   const [shattered, setShattered] = useState(false);
@@ -27,7 +27,7 @@ export default function Scene() {
           <ShatteringGlass onComplete={() => setReveal(true)} />
         )}
       </Canvas>
-      {reveal && <Content />}
+      {/* {reveal && <Content />} */}
     </div>
   );
 }
