@@ -5,7 +5,7 @@ import { TextureLoader } from "three";
 
 // Adjust these paths as needed
 import crack1 from "../images/rect1.webp";
-import crack2 from "/textures/crack2.png";
+import crack2 from "../images/rect4.webp";
 import crack3 from "/textures/crack3.png";
 
 export default function IntactGlass({ onShatter }) {
