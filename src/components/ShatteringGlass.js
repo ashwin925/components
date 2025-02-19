@@ -14,13 +14,13 @@ function Shard({ pos, rot, width, height, velocity, angularVelocity, materialPro
       const delay = Math.random() * 0.5;
       tl.delay(delay)
         .to(meshRef.current.material, {
-          emissiveIntensity: 2.0, // First flash boost
+          emissiveIntensity: 3.0, // First flash boost
           clearcoat: 1.0,
           duration: 0.15,
           ease: "power2.inOut",
         })
         .to(meshRef.current.material, {
-          emissiveIntensity: 2.2, // Second flash (even higher)
+          emissiveIntensity: 3.5, // Second flash (even higher)
           clearcoat: 1.0,
           duration: 0.1,
           ease: "power2.inOut",
