@@ -7,54 +7,50 @@ export default function ShatteringGlass({ onComplete }) {
   useEffect(() => {
     // Create 120 shards with randomized properties.
     const newShards = Array.from({ length: 120 }).map(() => {
-      // Position: spread over a 2x2 area (centered at origin).
+      // Position shards within a 2×2 glass area (centered at origin)
       const pos = [
-        (Math.random() - 0.5) * 2, 
-        (Math.random() - 0.5) * 2, 
+        (Math.random() - 0.5) * 2,
+        (Math.random() - 0.5) * 2,
         0
       ];
-      // Rotation: random for natural tumbling.
+      // Random rotation for natural tumbling
       const rot = [
         Math.random() * Math.PI,
         Math.random() * Math.PI,
         Math.random() * Math.PI,
       ];
-      // Dimensions: random width and height (small, medium, large shards).
+      // Random dimensions for varied shard sizes
       const width = 0.1 + Math.random() * 0.4;  // between 0.1 and 0.5
       const height = 0.1 + Math.random() * 0.4; // between 0.1 and 0.5
 
-      // Velocity: Force most shards to fall downward.
-      // 90% of shards: strong downward impulse; 10%: slight upward variation.
-      const xVel = (Math.random() - 0.5) * 3; // slight x variation
-      const zVel = (Math.random() - 0.5) * 3; // slight z variation
-      const yVel =
-        Math.random() < 0.1
-          ? Math.random() * 2  // about 10% go slightly upward
-          : - (5 + Math.random() * 3); // majority fall downward between -5 and -8
+      // **Burst-Shatter Impulse:**
+      // All shards receive a strong forward (positive Z) burst—simulating an impact from behind.
+      // A slight random impulse on X and Y is added.
+      const xVel = (Math.random() - 0.5) * 3;
+      const yVel = (Math.random() - 0.5) * 2;
+      const zVel = 8 + Math.random() * 4; // Strong forward burst
 
       const velocity = [xVel, yVel, zVel];
 
-      // Angular velocity for natural rotation.
+      // Random angular velocity for natural tumbling.
       const angularVelocity = [
         (Math.random() - 0.5) * 6,
         (Math.random() - 0.5) * 6,
         (Math.random() - 0.5) * 6,
       ];
 
-      // Material properties:
-      // 30% chance for a highly reflective shard.
+      // Material properties: 30% chance for a super-reflective shard.
       const isReflective = Math.random() < 0.3;
-
       const materialProps = isReflective
         ? {
-            color: "#00BFFF",  // bright blue
-            metalness: 1.0,    // super reflective
-            roughness: 0.0,    // very smooth
+            color: "#00BFFF", // bright blue
+            metalness: 1.0,   // maximum reflectivity
+            roughness: 0.0,   // very smooth
             opacity: 0.95,
             transparent: true,
           }
         : {
-            color: "#00BFFF",  // bright blue
+            color: "#00BFFF", // bright blue
             metalness: 0.9,
             roughness: 0.05,
             opacity: 0.95,
@@ -88,7 +84,7 @@ export default function ShatteringGlass({ onComplete }) {
           linearDamping={0.2}
         >
           <mesh castShadow receiveShadow>
-            {/* Use a box geometry with a thin depth (0.02) to simulate real glass thickness */}
+            {/* Use a box geometry with a small depth (0.02) to simulate real glass thickness */}
             <boxGeometry args={[shard.width, shard.height, 0.02]} />
             <meshStandardMaterial {...shard.materialProps} />
           </mesh>
