@@ -54,6 +54,9 @@ export default function ShatteringGlass({ onComplete }) {
             metalness: 0.95,
             roughness: 0.05,
             clearcoat: 0.8,
+            clearcoatRoughness: 0.05,
+            emissive: "#00BFFF",
+            emissiveIntensity: 1.0,
             opacity: 0.98,
             transparent: true,
           };
