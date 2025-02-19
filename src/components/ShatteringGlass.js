@@ -53,6 +53,7 @@ export default function ShatteringGlass({ onComplete }) {
             color: "#00BFFF",
             metalness: 0.95,
             roughness: 0.05,
+            clearcoat: 0.8,
             opacity: 0.98,
             transparent: true,
           };
