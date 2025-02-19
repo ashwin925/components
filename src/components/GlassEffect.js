@@ -137,15 +137,26 @@ function GlassShatterEffect({ onComplete }) {
 // End Glass Shatter Effect Component
 //////////////////////////
 
-// ---------- Main GlassEffect Component ----------
+// ---------- Main GlassEffect Component (Responsive) ----------
 const GlassEffect = () => {
   const [index, setIndex] = useState(0);
   const [isBanging, setIsBanging] = useState(false);
-  const [width, setWidth] = useState(220);
-  const [height, setHeight] = useState(420);
+  // Set initial width and height responsively.
+  const [width, setWidth] = useState(window.innerWidth * 0.3 > 220 ? window.innerWidth * 0.3 : 220);
+  const [height, setHeight] = useState(window.innerHeight * 0.4 > 420 ? window.innerHeight * 0.4 : 420);
   const [isRunning, setIsRunning] = useState(true); // Controls image cycling
   const [isShattered, setIsShattered] = useState(false); // When true, show shatter effect
   const [showContent, setShowContent] = useState(false); // Underlying content visibility
+
+  // Update container dimensions on window resize
+  useEffect(() => {
+    const handleResize = () => {
+      setWidth(window.innerWidth * 0.3 > 220 ? window.innerWidth * 0.3 : 220);
+      setHeight(window.innerHeight * 0.4 > 420 ? window.innerHeight * 0.4 : 420);
+    };
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   // Image cycle: advance image every 1500ms.
   useEffect(() => {
@@ -159,7 +170,6 @@ const GlassEffect = () => {
           const nextIndex = (prevIndex + 1) % images.length;
           // When the fourth image (index 3) is reached, trigger shattering.
           if (prevIndex === 3) {
-            // Trigger shatter effect and reveal content concurrently.
             setIsShattered(true);
             setShowContent(true);
             return 3; // Keep displaying the fourth image as base.
@@ -172,7 +182,7 @@ const GlassEffect = () => {
     return () => clearInterval(interval);
   }, [isRunning, isShattered]);
 
-  // When shattering is active, we leave the content visible.
+  // When shattering is active, we leave content visible.
   // Once the shatter overlay fades out (via its onComplete), we reset the cycle.
   const handleShatterComplete = () => {
     setIsShattered(false);
@@ -185,7 +195,7 @@ const GlassEffect = () => {
 
   return (
     <div className={`page-container ${isBanging ? "jitter" : ""}`}>
-      {/* Underlying content container - always rendered with high z-index */}
+      {/* Underlying content container (fixed, responsive) */}
       <div
         className="content"
         style={{
@@ -204,7 +214,7 @@ const GlassEffect = () => {
       </div>
 
       {isShattered ? (
-        // Render the full-screen shatter overlay (which will fade out and call onComplete)
+        // Render the full-screen shatter effect overlay.
         <GlassShatterEffect onComplete={handleShatterComplete} />
       ) : (
         <div
