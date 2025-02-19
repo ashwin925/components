@@ -1,10 +1,8 @@
-// Scene.js
-import React, { useState } from "react";
 import { Canvas } from "@react-three/fiber";
-import { OrbitControls } from "@react-three/drei";
-import IntactGlass from "./IntactGlass";
-import FracturedGlass from "./FracturedGlass";
-import Content from "./Content";
+import { useState } from "react";
+import Glass from "./Glass"; // Your intact glass component that triggers onShatter
+import ShatteringGlass from "./ShatteringGlass";
+import Content from "./Content"; // Revealed content component
 
 export default function Scene() {
   const [shattered, setShattered] = useState(false);
@@ -15,20 +13,18 @@ export default function Scene() {
       <Canvas>
         <ambientLight intensity={0.5} />
         <directionalLight position={[2, 2, 2]} />
-        <OrbitControls />
-        {/* Underlying background content (e.g., a colored plane) */}
+        {/* Underlying content (e.g., a background plane) */}
         <mesh position={[0, 0, -1]}>
           <planeGeometry args={[2, 2]} />
-          <meshStandardMaterial color="#ffcc00" opacity={showContent ? 1 : 0} transparent />
+          <meshStandardMaterial color={"#ffcc00"} opacity={showContent ? 1 : 0} transparent />
         </mesh>
-        {/* Render either the intact glass or fractured glass */}
+        {/* Show intact glass until shattered; then render the shattering effect */}
         {!shattered ? (
-          <IntactGlass onShatter={() => setShattered(true)} />
+          <Glass onShatter={() => setShattered(true)} />
         ) : (
-          <FracturedGlass onComplete={() => setShowContent(true)} />
+          <ShatteringGlass onComplete={() => setShowContent(true)} />
         )}
       </Canvas>
-      {/* Overlay revealed content */}
       {showContent && <Content />}
     </div>
   );

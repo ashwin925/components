@@ -1,8 +1,8 @@
 "use client";
 import React from "react";
 import GlassEffect from './components/GlassEffect.tsx';
-import CardReveal from "./components/CharacterReveal.jsx";
-import GlassPanel from './components/glassDiv.jsx';
+import CardReveal from "./components/CharacterReveal.js";
+import GlassPanel from './components/glassDiv.js';
 import Scene from "./components/Scene.js";
 
 function App() {
