@@ -44,7 +44,7 @@ export default function ShatteringGlass({ onComplete }) {
             roughness: 0.0,
             opacity: 0.98,
             transparent: true,
-            emissive: "#00BFFF",  // same as base color
+            emissive: "#00FFF",  // same as base color
           }
         : {
             color: "#00BFFF",
@@ -52,7 +52,7 @@ export default function ShatteringGlass({ onComplete }) {
             roughness: 0.05,
             opacity: 0.98,
             transparent: true,
-            emissive: "#00BFFF",  // same as base color
+            emissive: "#00FFF",  // same as base color
           };
 
       return { pos, rot, width, height, velocity, angularVelocity, materialProps };
