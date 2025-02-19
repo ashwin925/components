@@ -4,9 +4,9 @@ import { useLoader } from "@react-three/fiber";
 import { TextureLoader } from "three";
 
 // Import textures (adjust path as needed)
-import crack1 from "../assets/textures/crack1.png";
-import crack2 from "../assets/textures/crack2.png";
-import crack3 from "../assets/textures/crack3.png";
+import crack1 from "../images/rect1.webp";
+import crack2 from "../images/rect4.webp";
+import crack3 from "../images/rect2.webp";
 
 const textureMap = {
   1: crack1,
