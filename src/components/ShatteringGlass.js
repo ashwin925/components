@@ -5,54 +5,54 @@ export default function ShatteringGlass({ onComplete }) {
   const [shards, setShards] = useState([]);
 
   useEffect(() => {
-    // Create 120 shards with randomized properties
     const newShards = Array.from({ length: 120 }).map(() => {
-      // Random starting position within the 2x2 glass area
+      // Start within a 2x2 area (simulating the glass panel)
       const pos = [
-        (Math.random() - 0.5) * 2,
-        (Math.random() - 0.5) * 2,
-        0,
+        (Math.random() - 0.5) * 2, 
+        (Math.random() - 0.5) * 2, 
+        0
       ];
-      // Random initial rotation
       const rot = [
         Math.random() * Math.PI,
         Math.random() * Math.PI,
         Math.random() * Math.PI,
       ];
-      // Random shard dimensions (varied sizes)
+      // Randomized dimensions for varied shard sizes
       const width = 0.1 + Math.random() * 0.4;  // between 0.1 and 0.5
       const height = 0.1 + Math.random() * 0.4; // between 0.1 and 0.5
-
-      // **Velocity Adjustments:**
-      // Lateral (X, Y) velocities are increased for a wider spread,
-      // while the forward (Z) velocity is reduced for a slower approach.
-      const xVel = (Math.random() - 0.5) * 6;       // wider spread horizontally
-      const yVel = (Math.random() - 0.5) * 4;       // moderate vertical spread
-      const zVel = 4 + Math.random() * 2;           // slower forward burst
+      
+      // **Velocity:**
+      // - Very little lateral movement (x and y near 0)
+      // - A forward (z) velocity that is slower than before but still brings shards toward the viewer
+      const xVel = (Math.random() - 0.5) * 0.5;  // minimal sideways drift
+      const yVel = (Math.random() - 0.5) * 0.5;  // minimal vertical drift
+      const zVel = 3 + Math.random() * 2;        // slower, but still moving forward
       const velocity = [xVel, yVel, zVel];
 
-      // Random angular velocity for natural tumbling
+      // Angular velocity for natural tumbling during the forward motion
       const angularVelocity = [
-        (Math.random() - 0.5) * 6,
-        (Math.random() - 0.5) * 6,
-        (Math.random() - 0.5) * 6,
+        (Math.random() - 0.5) * 4,
+        (Math.random() - 0.5) * 4,
+        (Math.random() - 0.5) * 4,
       ];
 
-      // 30% chance for a super-reflective shard
+      // **Material Properties:**
+      // 30% chance for a shard to have a super-reflective, gleaming finish.
       const isReflective = Math.random() < 0.3;
       const materialProps = isReflective
         ? {
-            color: "#00BFFF", // bright blue
-            metalness: 1.0,   // maximum reflectivity
-            roughness: 0.0,   // very smooth
-            opacity: 0.95,
+            color: "#00BFFF",      // bright blue
+            metalness: 1.0,        // maximum reflectivity
+            roughness: 0.0,        // very smooth surface
+            opacity: 0.98,
             transparent: true,
+            emissive: "#00FFFF",   // slight emissive tint for extra gleam
           }
         : {
-            color: "#00BFFF", // bright blue
-            metalness: 0.9,
+            color: "#00BFFF",      // bright blue
+            metalness: 0.95,
             roughness: 0.05,
-            opacity: 0.95,
+            opacity: 0.98,
             transparent: true,
           };
 
@@ -61,7 +61,7 @@ export default function ShatteringGlass({ onComplete }) {
 
     setShards(newShards);
 
-    // Increase the delay slightly (e.g., 2000ms) so the full effect can be appreciated.
+    // Delay the onComplete callback (now 2000ms) so the effect can be fully appreciated.
     const timer = setTimeout(() => {
       onComplete();
     }, 2000);
@@ -70,7 +70,8 @@ export default function ShatteringGlass({ onComplete }) {
   }, [onComplete]);
 
   return (
-    <Physics gravity={[0, -9.81, 0]}>
+    // No gravity so shards come straight to the viewer
+    <Physics gravity={[0, 0, 0]}>
       {shards.map((shard, index) => (
         <RigidBody
           key={index}
@@ -83,7 +84,7 @@ export default function ShatteringGlass({ onComplete }) {
           linearDamping={0.2}
         >
           <mesh castShadow receiveShadow>
-            {/* Use box geometry with a small depth (0.02) to simulate realistic glass thickness */}
+            {/* A box geometry with a thin depth simulates real glass thickness */}
             <boxGeometry args={[shard.width, shard.height, 0.02]} />
             <meshStandardMaterial {...shard.materialProps} />
           </mesh>
