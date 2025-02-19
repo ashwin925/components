@@ -6,7 +6,7 @@ import { TextureLoader } from "three";
 // Adjust these paths as needed
 import crack1 from "../images/rect1.webp";
 import crack2 from "../images/rect4.webp";
-import crack3 from "/textures/crack3.png";
+import crack3 from "../images/rect2.webp";
 
 export default function IntactGlass({ onShatter }) {
   const ref = useRef();
