@@ -6,7 +6,7 @@ export default function ShatteringGlass({ onComplete }) {
 
   useEffect(() => {
     const newShards = Array.from({ length: 120 }).map(() => {
-      // Start within a 2x2 area (simulating the glass panel)
+      // Start within a 2x2 area (glass panel)
       const pos = [
         (Math.random() - 0.5) * 2, 
         (Math.random() - 0.5) * 2, 
@@ -21,35 +21,33 @@ export default function ShatteringGlass({ onComplete }) {
       const width = 0.1 + Math.random() * 0.4;  // between 0.1 and 0.5
       const height = 0.1 + Math.random() * 0.4; // between 0.1 and 0.5
       
-      // **Velocity:**
-      // - Very little lateral movement (x and y near 0)
-      // - A forward (z) velocity that is slower than before but still brings shards toward the viewer
-      const xVel = (Math.random() - 0.5) * 0.5;  // minimal sideways drift
-      const yVel = (Math.random() - 0.5) * 0.5;  // minimal vertical drift
-      const zVel = 3 + Math.random() * 2;        // slower, but still moving forward
+      // Velocity: Minimal lateral drift; all shards come straight forward
+      const xVel = (Math.random() - 0.5) * 0.5;
+      const yVel = (Math.random() - 0.5) * 0.5;
+      const zVel = 3 + Math.random() * 2; // slower forward burst
       const velocity = [xVel, yVel, zVel];
 
-      // Angular velocity for natural tumbling during the forward motion
       const angularVelocity = [
         (Math.random() - 0.5) * 4,
         (Math.random() - 0.5) * 4,
         (Math.random() - 0.5) * 4,
       ];
 
-      // **Material Properties:**
-      // 30% chance for a shard to have a super-reflective, gleaming finish.
+      // Uniform material: All shards are the same bright blue
+      // We'll retain slight differences in reflectiveness based on a random flag,
+      // but ensure the base and emissive colors match.
       const isReflective = Math.random() < 0.3;
       const materialProps = isReflective
         ? {
-            color: "#00BFFF",      // bright blue
-            metalness: 1.0,        // maximum reflectivity
-            roughness: 0.0,        // very smooth surface
+            color: "#00BFFF",
+            metalness: 1.0,
+            roughness: 0.0,
             opacity: 0.98,
             transparent: true,
-            emissive: "#00FFFF",   // slight emissive tint for extra gleam
+            emissive: "#00FFF",  // same as base color
           }
         : {
-            color: "#00BFFF",      // bright blue
+            color: "#00BFFF",
             metalness: 0.95,
             roughness: 0.05,
             opacity: 0.98,
@@ -61,7 +59,7 @@ export default function ShatteringGlass({ onComplete }) {
 
     setShards(newShards);
 
-    // Delay the onComplete callback (now 2000ms) so the effect can be fully appreciated.
+    // Delay the onComplete callback to allow the full effect to play out.
     const timer = setTimeout(() => {
       onComplete();
     }, 2000);
@@ -70,7 +68,6 @@ export default function ShatteringGlass({ onComplete }) {
   }, [onComplete]);
 
   return (
-    // No gravity so shards come straight to the viewer
     <Physics gravity={[0, 0, 0]}>
       {shards.map((shard, index) => (
         <RigidBody
@@ -84,7 +81,6 @@ export default function ShatteringGlass({ onComplete }) {
           linearDamping={0.2}
         >
           <mesh castShadow receiveShadow>
-            {/* A box geometry with a thin depth simulates real glass thickness */}
             <boxGeometry args={[shard.width, shard.height, 0.02]} />
             <meshStandardMaterial {...shard.materialProps} />
           </mesh>
