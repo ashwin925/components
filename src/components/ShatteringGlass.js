@@ -1,31 +1,36 @@
-// ShatteringGlass.js
-import { useEffect, useState } from "react";
-import { Physics, RigidBody } from "@react-three/rapier";
+import { useRef, useEffect } from "react";
+import { useRapier } from "@react-three/rapier";
+import * as THREE from "three";
 
-export default function ShatteringGlass({ triggerBreak }) {
-  const [shards, setShards] = useState([]);
+export default function ShatteringGlass({ onComplete }) {
+  const { world } = useRapier();
+  const fragmentsRef = useRef([]);
 
   useEffect(() => {
-    if (triggerBreak) {
-      // Create 20 shards with random positions and rotations
-      const newShards = Array.from({ length: 20 }).map((_, i) => ({
-        position: [Math.random() * 2 - 1, Math.random() * 2 - 1, 0],
-        rotation: [Math.random() * Math.PI, Math.random() * Math.PI, 0],
-      }));
-      setShards(newShards);
-    }
-  }, [triggerBreak]);
+    // Create shattered glass effect
+    for (let i = 0; i < 20; i++) {
+      const piece = new THREE.Mesh(
+        new THREE.PlaneGeometry(Math.random() * 0.5, Math.random() * 0.5),
+        new THREE.MeshStandardMaterial({ color: "white", transparent: true, opacity: 0.8 })
+      );
 
-  return (
-    <Physics>
-      {shards.map((shard, index) => (
-        <RigidBody key={index} colliders="hull" position={shard.position} rotation={shard.rotation}>
-          <mesh>
-            <planeGeometry args={[0.3, 0.3]} />
-            <meshStandardMaterial color="white" transparent opacity={0.9} />
-          </mesh>
-        </RigidBody>
-      ))}
-    </Physics>
-  );
+      piece.position.set((Math.random() - 0.5) * 2, (Math.random() - 0.5) * 2, 0);
+      piece.rotation.set(Math.random() * Math.PI, Math.random() * Math.PI, Math.random() * Math.PI);
+      world.add(piece);
+      fragmentsRef.current.push(piece);
+    }
+
+    // Animate pieces falling
+    setTimeout(() => {
+      fragmentsRef.current.forEach((piece) => {
+        piece.position.y -= Math.random() * 2;
+      });
+
+      setTimeout(() => {
+        onComplete(); // Reveal content after animation
+      }, 1000);
+    }, 500);
+  }, []);
+
+  return null; // No visible component, only physics objects
 }
