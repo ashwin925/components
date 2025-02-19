@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState } from "react";
 import "./GlassEffect.css";
 import rect1 from "../images/rect1.webp";
 import rect2 from "../images/rect2.webp";
@@ -10,13 +10,15 @@ import { gsap } from "gsap";
 
 const images = [rect1, rect3, rect4, rect2];
 
-// ---------- Glass Shatter Effect Component ----------
+//////////////////////
+// Glass Shatter Effect Component
+//////////////////////
 
 function GlassShatterEffect({ onComplete }) {
   const [shards, setShards] = useState([]);
 
   useEffect(() => {
-    // Create an array of 120 shards with randomized properties
+    // Create an array of 120 shards with randomized properties.
     const newShards = Array.from({ length: 120 }).map(() => {
       // Position shards within a 2x2 area (simulating the glass panel)
       const pos = [
@@ -30,16 +32,16 @@ function GlassShatterEffect({ onComplete }) {
         Math.random() * Math.PI,
         Math.random() * Math.PI,
       ];
-      // Random dimensions for varied shard sizes
-      const width = 0.1 + Math.random() * 0.4;  // between 0.1 and 0.5
-      const height = 0.1 + Math.random() * 0.4; // between 0.1 and 0.5
-      
+      // Random dimensions for varied shard sizes (between 0.1 and 0.5)
+      const width = 0.1 + Math.random() * 0.4;
+      const height = 0.1 + Math.random() * 0.4;
+
       // Minimal lateral drift; shards come straight toward the viewer.
       const xVel = (Math.random() - 0.5) * 0.5;
       const yVel = (Math.random() - 0.5) * 0.5;
       const zVel = 3 + Math.random() * 2; // controlled forward burst
       const velocity = [xVel, yVel, zVel];
-      
+
       // Angular velocity for natural tumbling
       const angularVelocity = [
         (Math.random() - 0.5) * 4,
@@ -47,14 +49,14 @@ function GlassShatterEffect({ onComplete }) {
         (Math.random() - 0.5) * 4,
       ];
 
-      // Base material: dark color for all shards
+      // Base material: dark color for all shards.
       const baseColor = "#001F3F"; // dark blue/blackish
       const baseEmissiveIntensity = 0.2;
       const baseClearcoat = 0.8;
-      
+
       // Randomly flag ~30% of shards for an enhanced flash effect.
       const isFlash = Math.random() < 0.3;
-      
+
       // Material properties for all shards (uniform dark base)
       const materialProps = {
         color: baseColor,
@@ -73,7 +75,7 @@ function GlassShatterEffect({ onComplete }) {
 
     setShards(newShards);
 
-    // Delay onComplete (2000ms) to allow the full shatter effect to play out
+    // Delay onComplete (2000ms) to allow the full shatter effect to play out.
     const timer = setTimeout(() => {
       onComplete();
     }, 2000);
@@ -83,28 +85,28 @@ function GlassShatterEffect({ onComplete }) {
 
   // Inner Shard component with enhanced flash animation
   function Shard({ pos, rot, width, height, velocity, angularVelocity, materialProps, flash }) {
-    const meshRef = useRef();
+    const meshRef = React.useRef();
 
     useEffect(() => {
       if (flash && meshRef.current) {
-        // Create a GSAP timeline for an intense, multiple-flash sequence
+        // Create a GSAP timeline for an intense flash sequence.
         const tl = gsap.timeline({ repeat: 1, yoyo: true });
-        const delay = Math.random() * 0.5; // random delay for natural effect
+        const delay = Math.random() * 0.5; // random delay for natural effect.
         tl.delay(delay)
           .to(meshRef.current.material, {
-            emissiveIntensity: 3.0, // first flash
+            emissiveIntensity: 3.0, // first flash boost.
             clearcoat: 1.0,
             duration: 0.15,
             ease: "power2.inOut",
           })
           .to(meshRef.current.material, {
-            emissiveIntensity: 3.5, // peak flash
+            emissiveIntensity: 3.5, // peak flash.
             clearcoat: 1.0,
             duration: 0.1,
             ease: "power2.inOut",
           })
           .to(meshRef.current.material, {
-            emissiveIntensity: materialProps.emissiveIntensity, // revert to base
+            emissiveIntensity: materialProps.emissiveIntensity, // revert.
             clearcoat: materialProps.clearcoat,
             duration: 0.15,
             ease: "power2.inOut",
@@ -131,7 +133,7 @@ function GlassShatterEffect({ onComplete }) {
   }
 
   return (
-    // Render the shatter effect within a Canvas sized to match the glass container.
+    // Render the shatter effect in a Canvas sized to match the glass container.
     <Canvas style={{ width: "220px", height: "420px" }}>
       <Physics gravity={[0, 0, 0]}>
         {shards.map((shard, index) => (
@@ -142,9 +144,11 @@ function GlassShatterEffect({ onComplete }) {
   );
 }
 
-// ---------- End Glass Shatter Effect Component ----------
+//////////////////////
+// End Glass Shatter Effect Component
+//////////////////////
 
-// ---------- Main GlassEffect Component (unchanged, with added "Shatter!" trigger) ----------
+// ---------- Main GlassEffect Component (with automatic shatter) ----------
 
 const GlassEffect = () => {
   const [index, setIndex] = useState(0);
@@ -152,8 +156,11 @@ const GlassEffect = () => {
   const [width, setWidth] = useState(220);
   const [height, setHeight] = useState(420);
   const [isRunning, setIsRunning] = useState(true); // Control animation
-  const [isShattered, setIsShattered] = useState(false); // New state to trigger shattering
+  const [isShattered, setIsShattered] = useState(false); // Trigger shattering automatically
+  const [hasShattered, setHasShattered] = useState(false); // Ensure one-time shatter
+  const [showContent, setShowContent] = useState(false); // Underlying content revealed
 
+  // Cycle images as before.
   useEffect(() => {
     if (!isRunning) return;
 
@@ -162,18 +169,48 @@ const GlassEffect = () => {
 
       setTimeout(() => {
         setIsBanging(false);
-        setIndex((prevIndex) => (prevIndex + 1) % images.length);
+        setIndex((prevIndex) => {
+          const newIndex = (prevIndex + 1) % images.length;
+          // If we've just shown the third image (index 2) and haven't shattered yet, trigger shatter.
+          if (newIndex === 2 && !hasShattered) {
+            setIsShattered(true);
+            setHasShattered(true);
+          }
+          return newIndex;
+        });
       }, 150);
     }, 1500);
 
     return () => clearInterval(interval);
-  }, [isRunning]);
+  }, [isRunning, hasShattered]);
 
   return (
     <div className={`page-container ${isBanging ? "jitter" : ""}`}>
+      {/* Underlying content - initially hidden */}
+      <div
+        className="content"
+        style={{
+          position: "absolute",
+          width: `${width}px`,
+          height: `${height}px`,
+          top: "50%",
+          left: "50%",
+          transform: "translate(-50%, -50%)",
+          opacity: showContent ? 1 : 0,
+          transition: "opacity 0.5s ease-in-out",
+          zIndex: 0,
+        }}
+      >
+        {/* Replace with your desired content */}
+        <h1 style={{ color: "#fff", textAlign: "center" }}>Content Revealed!</h1>
+      </div>
+
       {isShattered ? (
-        // Render the glass shatter effect if triggered
-        <GlassShatterEffect onComplete={() => setIsShattered(false)} />
+        // Render the shattering effect; once complete, reveal content.
+        <GlassShatterEffect onComplete={() => {
+          setIsShattered(false);
+          setShowContent(true);
+        }} />
       ) : (
         <div
           className={`glass-container ${isBanging ? "bang" : ""}`}
@@ -188,7 +225,7 @@ const GlassEffect = () => {
         </div>
       )}
 
-      {/* Sliders & Control Buttons */}
+      {/* Sliders & Stop/Start Button */}
       <div className="slider-container">
         <div className="slider">
           <label>Width</label>
@@ -214,10 +251,6 @@ const GlassEffect = () => {
         </div>
         <button className="toggle-btn" onClick={() => setIsRunning(!isRunning)}>
           {isRunning ? "Stop" : "Start"}
-        </button>
-        {/* New button to trigger shattering */}
-        <button className="toggle-btn" onClick={() => setIsShattered(true)}>
-          Shatter!
         </button>
       </div>
     </div>
