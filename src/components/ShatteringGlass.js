@@ -2,26 +2,37 @@ import React, { useEffect, useRef, useState } from "react";
 import { Physics, RigidBody } from "@react-three/rapier";
 import { gsap } from "gsap";
 
-// Inner component representing a single shard.
+// Single Shard Component with enhanced flash animation
 function Shard({ pos, rot, width, height, velocity, angularVelocity, materialProps, flash }) {
   const meshRef = useRef();
 
-  // If flash is enabled for this shard, schedule a flash animation.
   useEffect(() => {
     if (flash && meshRef.current) {
-      // Random delay between 0 and 2 seconds for the flash.
-      const delay = Math.random() * 2;
-      // Animate emissiveIntensity from base (set in materialProps) to a higher value briefly.
-      gsap.to(meshRef.current.material, {
-        emissiveIntensity: 1.5,
-        duration: 0.2,
-        delay,
-        onComplete: () => {
-          gsap.to(meshRef.current.material, { emissiveIntensity: materialProps.emissiveIntensity, duration: 0.2 });
-        },
-      });
+      // Create a GSAP timeline to animate multiple flashes
+      const tl = gsap.timeline({ repeat: 1, yoyo: true });
+      // Random delay for each shard so flashes occur at different times
+      const delay = Math.random() * 0.5;
+      tl.delay(delay)
+        .to(meshRef.current.material, {
+          emissiveIntensity: 2.0, // First flash boost
+          clearcoat: 1.0,
+          duration: 0.15,
+          ease: "power2.inOut",
+        })
+        .to(meshRef.current.material, {
+          emissiveIntensity: 2.2, // Second flash (even higher)
+          clearcoat: 1.0,
+          duration: 0.1,
+          ease: "power2.inOut",
+        })
+        .to(meshRef.current.material, {
+          emissiveIntensity: materialProps.emissiveIntensity, // Return to base value
+          clearcoat: materialProps.clearcoat,
+          duration: 0.15,
+          ease: "power2.inOut",
+        });
     }
-  }, [flash, materialProps.emissiveIntensity]);
+  }, [flash, materialProps.emissiveIntensity, materialProps.clearcoat]);
 
   return (
     <RigidBody
@@ -34,6 +45,7 @@ function Shard({ pos, rot, width, height, velocity, angularVelocity, materialPro
       linearDamping={0.2}
     >
       <mesh ref={meshRef} castShadow receiveShadow>
+        {/* Use a box geometry to simulate a shard with slight thickness */}
         <boxGeometry args={[width, height, 0.02]} />
         <meshStandardMaterial {...materialProps} />
       </mesh>
@@ -41,12 +53,14 @@ function Shard({ pos, rot, width, height, velocity, angularVelocity, materialPro
   );
 }
 
+// Main ShatteringGlass Component
 export default function ShatteringGlass({ onComplete }) {
   const [shards, setShards] = useState([]);
 
   useEffect(() => {
+    // Create an array of 120 shards with randomized properties
     const newShards = Array.from({ length: 120 }).map(() => {
-      // Position shards within a 2x2 area (the glass panel)
+      // Random starting position within a 2x2 glass area (centered at origin)
       const pos = [
         (Math.random() - 0.5) * 2,
         (Math.random() - 0.5) * 2,
@@ -58,40 +72,39 @@ export default function ShatteringGlass({ onComplete }) {
         Math.random() * Math.PI,
         Math.random() * Math.PI,
       ];
-      // Randomized dimensions for varied shard sizes
-      const width = 0.1 + Math.random() * 0.4;  // between 0.1 and 0.5
-      const height = 0.1 + Math.random() * 0.4; // between 0.1 and 0.5
-
-      // Velocity: Minimal lateral drift; all shards come straight forward.
+      // Random dimensions for varied shard sizes (between 0.1 and 0.5)
+      const width = 0.1 + Math.random() * 0.4;
+      const height = 0.1 + Math.random() * 0.4;
+      
+      // Minimal lateral drift; shards come straight toward the viewer.
       const xVel = (Math.random() - 0.5) * 0.5;
       const yVel = (Math.random() - 0.5) * 0.5;
-      const zVel = 3 + Math.random() * 2; // slower forward burst
+      const zVel = 3 + Math.random() * 2; // Controlled forward burst
       const velocity = [xVel, yVel, zVel];
-
-      // Angular velocity for natural tumbling.
+      
+      // Angular velocity for natural tumbling
       const angularVelocity = [
         (Math.random() - 0.5) * 4,
         (Math.random() - 0.5) * 4,
         (Math.random() - 0.5) * 4,
       ];
 
-      // All shards have a dark base.
-      // We'll use a dark blue/blackish base color.
-      // Base emissiveIntensity is set low.
-      const baseColor = "#001F3F"; // dark blue
+      // All shards have a dark base color.
+      const baseColor = "#001F3F"; // Dark blue/blackish
       const baseEmissiveIntensity = 0.2;
-
-      // Enhanced material properties:
-      // All shards use the same dark color.
-      // Randomly, some shards (30% chance) are flagged for a flash.
+      const baseClearcoat = 0.8;
+      
+      // Randomly flag ~30% of shards for an enhanced flash effect.
       const isFlash = Math.random() < 0.3;
+      
+      // Material properties for all shards (uniform dark base)
       const materialProps = {
         color: baseColor,
         metalness: 0.95,
         roughness: 0.05,
-        clearcoat: 0.8,
+        clearcoat: baseClearcoat,
         clearcoatRoughness: 0.05,
-        emissive: baseColor, // same as base
+        emissive: baseColor,
         emissiveIntensity: baseEmissiveIntensity,
         opacity: 0.98,
         transparent: true,
@@ -102,7 +115,7 @@ export default function ShatteringGlass({ onComplete }) {
 
     setShards(newShards);
 
-    // Delay the onComplete callback to allow the effect to fully play (2000ms).
+    // Delay onComplete (2000ms) to allow the full effect to play out
     const timer = setTimeout(() => {
       onComplete();
     }, 2000);
@@ -111,7 +124,7 @@ export default function ShatteringGlass({ onComplete }) {
   }, [onComplete]);
 
   return (
-    // Set gravity to zero so all shards travel straight toward the viewer.
+    // Set gravity to zero so shards travel straight toward the viewer
     <Physics gravity={[0, 0, 0]}>
       {shards.map((shard, index) => (
         <Shard key={index} {...shard} />
