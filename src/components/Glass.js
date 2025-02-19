@@ -1,13 +1,13 @@
+// Glass.js
 import { useRef } from "react";
 import { useLoader } from "@react-three/fiber";
 import { TextureLoader } from "three";
 
-// Import your images (adjust the path if necessary)
-import crack1 from "./textures/crack1.png";
-import crack2 from "./textures/crack2.png";
-import crack3 from "./textures/crack3.png";
+// Import textures (adjust path as needed)
+import crack1 from "../assets/textures/crack1.png";
+import crack2 from "../assets/textures/crack2.png";
+import crack3 from "../assets/textures/crack3.png";
 
-// Map crack stages to the imported images
 const textureMap = {
   1: crack1,
   2: crack2,

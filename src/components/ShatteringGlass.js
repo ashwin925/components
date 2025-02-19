@@ -1,19 +1,16 @@
-import { useRef, useState } from "react";
-import { useThree } from "@react-three/fiber";
+// ShatteringGlass.js
+import { useEffect, useState } from "react";
 import { Physics, RigidBody } from "@react-three/rapier";
-import { useEffect } from "react";
-import * as THREE from "three";
 
 export default function ShatteringGlass({ triggerBreak }) {
   const [shards, setShards] = useState([]);
-  const { scene } = useThree();
 
   useEffect(() => {
     if (triggerBreak) {
-      // Create shards using simple planes
-      const newShards = Array.from({ length: 10 }).map((_, i) => ({
+      // Create 20 shards with random positions and rotations
+      const newShards = Array.from({ length: 20 }).map((_, i) => ({
         position: [Math.random() * 2 - 1, Math.random() * 2 - 1, 0],
-        rotation: [Math.random(), Math.random(), Math.random()],
+        rotation: [Math.random() * Math.PI, Math.random() * Math.PI, 0],
       }));
       setShards(newShards);
     }
@@ -22,10 +19,10 @@ export default function ShatteringGlass({ triggerBreak }) {
   return (
     <Physics>
       {shards.map((shard, index) => (
-        <RigidBody key={index} position={shard.position}>
+        <RigidBody key={index} colliders="hull" position={shard.position} rotation={shard.rotation}>
           <mesh>
-            <planeGeometry args={[0.5, 0.5]} />
-            <meshStandardMaterial color="white" transparent opacity={0.8} />
+            <planeGeometry args={[0.3, 0.3]} />
+            <meshStandardMaterial color="white" transparent opacity={0.9} />
           </mesh>
         </RigidBody>
       ))}

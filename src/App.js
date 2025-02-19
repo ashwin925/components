@@ -14,7 +14,9 @@ function App() {
     </div>
           <div>
             {/* <GlassPanel /> */}
-            <Scene />
+          </div>
+          <div style={{ position: "relative", width: "100vw", height: "100vh" }}>
+           <Scene />
           </div>
     </div>
   );
