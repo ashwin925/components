@@ -1,7 +1,8 @@
 import React from "react";
 import { Canvas } from "@react-three/fiber";
-import { Torus, OrbitControls, SpotLight } from "@react-three/drei";
-import { EffectComposer, Bloom } from "@react-three/postprocessing"; // ✅ Correct Import
+import { OrbitControls } from "@react-three/drei";
+import { EffectComposer, Bloom } from "@react-three/postprocessing";
+import * as THREE from "three";
 
 export default function GlassHeader3D() {
   return (
@@ -11,12 +12,12 @@ export default function GlassHeader3D() {
         Wrapped Content
       </div>
 
-      <Canvas shadows camera={{ position: [0, 0, 10], fov: 70 }}>
+      <Canvas camera={{ position: [0, 0, 10], fov: 70 }}>
         {/* Lighting */}
         <ambientLight intensity={1.5} />
-        <SpotLight position={[5, 5, 10]} intensity={3} />
+        <pointLight position={[5, 5, 10]} intensity={3} />
 
-        {/* Wraparound Glass Header */}
+        {/* Curved Glass Header */}
         <CurvedGlass position={[0, 1, 0]} scale={[6, 2, 1]} />
 
         {/* Bloom Effect for Glow */}
@@ -30,19 +31,30 @@ export default function GlassHeader3D() {
   );
 }
 
-// 3D Curved Glass Component (Torus for Wraparound)
+// 3D Curved Glass Component
 function CurvedGlass({ position, scale }) {
+  // Creating a custom geometry to achieve curvature
+  const curve = new THREE.CatmullRomCurve3([
+    new THREE.Vector3(-3, 0, -1),
+    new THREE.Vector3(-1.5, 1, 0),
+    new THREE.Vector3(0, 1.5, 0.5),
+    new THREE.Vector3(1.5, 1, 0),
+    new THREE.Vector3(3, 0, -1)
+  ]);
+
+  const geometry = new THREE.TubeGeometry(curve, 64, 0.3, 8, false);
+
   return (
-    <Torus args={[3.2, 0.3, 64, 100]} position={position} scale={scale} rotation={[Math.PI / 2, 0, 0]}>
+    <mesh geometry={geometry} position={position} scale={scale}>
       <meshStandardMaterial
         transparent
-        opacity={0.4}  // More transparency
-        roughness={0.05}  // Smooth, glassy
-        metalness={1}  // Reflective glass effect
-        color="#4fa8ff"  // Bright blue
-        emissive="#4fa8ff" // Adds glowing effect
-        emissiveIntensity={2} // Boosted blue glow
+        opacity={0.5}
+        roughness={0.05}
+        metalness={1}
+        color="#4fa8ff"
+        emissive="#4fa8ff"
+        emissiveIntensity={1.5}
       />
-    </Torus>
+    </mesh>
   );
 }
