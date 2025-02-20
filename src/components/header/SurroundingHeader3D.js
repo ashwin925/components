@@ -13,7 +13,6 @@ export default function TransparentGlassPanel() {
         {/* Glass Panel */}
         <GlassPanel position={[0, 0, 0]} scale={[12, 3, 1]} />
 
-        {/* Removed Environment to eliminate background */}
         <OrbitControls enableZoom={false} />
       </Canvas>
     </div>
@@ -26,12 +25,12 @@ function GlassPanel({ position, scale }) {
     <Plane args={[4, 2, 64, 64]} position={position} scale={scale} receiveShadow>
       <meshStandardMaterial
         transparent
-        opacity={1}  // Clear glass effect
+        opacity={0.3}  // More transparent but still visible
         roughness={0}   // Ultra-smooth surface
-        metalness={1} // Minimal reflections, no patterns
-        color="#4fa8ff"  // Strong bright blue
-        emissive="#4fa8ff" // Adds bright blue glow
-        emissiveIntensity={1} // More intense glow
+        metalness={0.7} // Keeps a slight metallic sheen without over-reflection
+        color="#3399ff"  // A brighter blue
+        emissive="#3399ff" // Adds a stronger blue glow
+        emissiveIntensity={2} // Boosted glow
         side={2} // Ensures both sides render properly
       />
     </Plane>
