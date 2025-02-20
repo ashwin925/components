@@ -1,32 +1,27 @@
 import React from "react";
 import { Canvas } from "@react-three/fiber";
-import { Plane, OrbitControls } from "@react-three/drei";
+import { Torus, OrbitControls, SpotLight, EffectComposer, Bloom } from "@react-three/drei";
 
-export default function TransparentGlassPanel() {
+export default function GlassHeader3D() {
   return (
     <div className="w-full h-[500px] relative flex items-center justify-center">
-      {/* Header Container with Specified Styles */}
-      {/* <div
-        className="absolute top-5 w-[400px] h-[80px] flex items-center justify-center text-white text-lg font-bold"
-        style={{
-          width: "100px",
-          height: "50px",
-          marginLeft: "400px",
-          marginTop: "30px",
-          position: "relative",
-          borderRadius: "10px",
-          background: "linear-gradient(to bottom, rgba(51, 60, 60, 0.3), rgba(143, 244, 255, 0.9), rgba(0, 255, 255, 0.3))",
-          border: "3px solid rgba(0, 229, 255, 0.8)",
-          outline: "3px solid rgba(0, 255, 255, 0.5)"
-        }}></div> */}
+      {/* Main Content - The Div to be Surrounded */}
+      <div className="absolute top-40 w-[400px] h-[80px] flex items-center justify-center text-white text-lg font-bold bg-gray-900 bg-opacity-30 rounded-md z-10">
+        Wrapped Content
+      </div>
 
-      <Canvas shadows camera={{ position: [0, 0, 12], fov: 50 }}>
-        {/* Soft ambient light for even brightness */}
-        <ambientLight intensity={2} />
-        <directionalLight position={[5, 5, 5]} intensity={3} castShadow />
+      <Canvas shadows camera={{ position: [0, 0, 10], fov: 70 }}>
+        {/* Lighting */}
+        <ambientLight intensity={1.5} />
+        <SpotLight position={[5, 5, 10]} intensity={3} />
 
-        {/* Glass Panel */}
-        <GlassPanel position={[0, 0, 0]} scale={[12, 3, 1]} />
+        {/* Wraparound Glass Header */}
+        <CurvedGlass position={[0, 1, 0]} scale={[6, 2, 1]} />
+
+        {/* Bloom Effect for Glow */}
+        <EffectComposer>
+          <Bloom intensity={1.5} luminanceThreshold={0.3} luminanceSmoothing={0.1} />
+        </EffectComposer>
 
         <OrbitControls enableZoom={false} />
       </Canvas>
@@ -34,20 +29,19 @@ export default function TransparentGlassPanel() {
   );
 }
 
-// Glass Panel Component
-function GlassPanel({ position, scale }) {
+// 3D Curved Glass Component (Torus for Wraparound)
+function CurvedGlass({ position, scale }) {
   return (
-    <Plane args={[4, 2, 64, 64]} position={position} scale={scale} receiveShadow>
+    <Torus args={[3.2, 0.3, 64, 100]} position={position} scale={scale} rotation={[Math.PI / 2, 0, 0]}>
       <meshStandardMaterial
         transparent
-        opacity={0.3}  // More transparent but still visible
-        roughness={0}   // Ultra-smooth surface
-        metalness={0.7} // Keeps a slight metallic sheen without over-reflection
-        color="#3399ff"  // A brighter blue
-        emissive="#3399ff" // Adds a stronger blue glow
-        emissiveIntensity={2} // Boosted glow
-        side={2} // Ensures both sides render properly
+        opacity={0.4}  // More transparency
+        roughness={0.05}  // Smooth, glassy
+        metalness={1}  // Reflective glass effect
+        color="#4fa8ff"  // Bright blue
+        emissive="#4fa8ff" // Adds glowing effect
+        emissiveIntensity={2} // Boosted blue glow
       />
-    </Plane>
+    </Torus>
   );
 }
