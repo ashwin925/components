@@ -11,13 +11,8 @@ export default function SurroundingHeader3D() {
         <directionalLight position={[5, 5, 5]} intensity={2} castShadow />
 
         {/* Large Glass Panel */}
-        <GlassPanel position={[0, 0, 0]} scale={[12, 3, 1]} />
+        <GlassPanel position={[0, 0, 0]} scale={[12, 2.5, 1]} />
 
-        {/* 3D Surrounding Header Frames */}
-        <GlassFrame position={[0, 2.6, 0]} scale={[14, 0.3, 1]} /> {/* Top */}
-        <GlassFrame position={[0, -2.6, 0]} scale={[14, 0.3, 1]} /> {/* Bottom */}
-        <GlassFrame position={[6.5, 0, 0]} scale={[3.5, 0.3, 1]} rotation={[0, 0, Math.PI / 2]} /> {/* Right */}
-        <GlassFrame position={[-6.5, 0, 0]} scale={[3.5, 0.3, 1]} rotation={[0, 0, Math.PI / 2]} /> {/* Left */}
 
         {/* Environment for subtle reflections */}
         <Environment preset="city" background={false} /> {/* No unwanted BG lines */}
