@@ -20,7 +20,7 @@ function App() {
             <Scene /> 
           </div> */}
           <div className="flex justify-center items-center h-screen bg-black">
-            <SurroundingHeader3D headerText="." />
+            <SurroundingHeader3D />
           </div>
     </div>
   );
