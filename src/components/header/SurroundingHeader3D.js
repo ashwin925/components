@@ -1,6 +1,7 @@
 import React from "react";
 import { Canvas } from "@react-three/fiber";
-import { Torus, OrbitControls, SpotLight, EffectComposer, Bloom } from "@react-three/drei";
+import { Torus, OrbitControls, SpotLight } from "@react-three/drei";
+import { EffectComposer, Bloom } from "@react-three/postprocessing"; // ✅ Correct Import
 
 export default function GlassHeader3D() {
   return (
