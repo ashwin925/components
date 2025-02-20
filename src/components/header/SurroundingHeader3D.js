@@ -26,12 +26,12 @@ function GlassPanel({ position, scale }) {
     <Plane args={[4, 2, 64, 64]} position={position} scale={scale} receiveShadow>
       <meshStandardMaterial
         transparent
-        opacity={0.2}  // Clear glass effect
+        opacity={1}  // Clear glass effect
         roughness={0}   // Ultra-smooth surface
-        metalness={0.5} // Minimal reflections, no patterns
+        metalness={1} // Minimal reflections, no patterns
         color="#4fa8ff"  // Strong bright blue
         emissive="#4fa8ff" // Adds bright blue glow
-        emissiveIntensity={1.5} // More intense glow
+        emissiveIntensity={1} // More intense glow
         side={2} // Ensures both sides render properly
       />
     </Plane>
