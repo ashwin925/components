@@ -5,53 +5,57 @@ import { Plane, Environment, OrbitControls } from "@react-three/drei";
 export default function SurroundingHeader3D() {
   return (
     <div className="w-full h-[500px] relative">
-      <Canvas shadows camera={{ position: [0, 0, 8], fov: 50 }}>
-        {/* Soft ambient light for glow effect */}
-        <ambientLight intensity={1} />
-        <directionalLight position={[2, 2, 5]} intensity={1} castShadow />
+      <Canvas shadows camera={{ position: [0, 0, 12], fov: 50 }}>
+        {/* Soft ambient light for a smooth glow */}
+        <ambientLight intensity={1.5} />
+        <directionalLight position={[5, 5, 5]} intensity={2} castShadow />
 
-        {/* Center Glass Panel */}
-        <GlassPanel position={[0, 0, 0]} scale={[3, 2, 1]} />
+        {/* Large Glass Panel */}
+        <GlassPanel position={[0, 0, 0]} scale={[12, 3, 1]} />
 
-        {/* 3D Surrounding Header Panels */}
-        <GlassFrame position={[0, 2.2, 0]} scale={[5, 0.3, 1]} /> {/* Top */}
-        <GlassFrame position={[0, -2.2, 0]} scale={[5, 0.3, 1]} /> {/* Bottom */}
-        <GlassFrame position={[2.5, 0, 0]} scale={[3.5, 0.3, 1]} rotation={[0, 0, Math.PI / 2]} /> {/* Right */}
-        <GlassFrame position={[-2.5, 0, 0]} scale={[3.5, 0.3, 1]} rotation={[0, 0, Math.PI / 2]} /> {/* Left */}
+        {/* 3D Surrounding Header Frames */}
+        <GlassFrame position={[0, 2.6, 0]} scale={[14, 0.3, 1]} /> {/* Top */}
+        <GlassFrame position={[0, -2.6, 0]} scale={[14, 0.3, 1]} /> {/* Bottom */}
+        <GlassFrame position={[6.5, 0, 0]} scale={[3.5, 0.3, 1]} rotation={[0, 0, Math.PI / 2]} /> {/* Right */}
+        <GlassFrame position={[-6.5, 0, 0]} scale={[3.5, 0.3, 1]} rotation={[0, 0, Math.PI / 2]} /> {/* Left */}
 
         {/* Environment for subtle reflections */}
-        <Environment preset="city" />
+        <Environment preset="city" background={false} /> {/* No unwanted BG lines */}
         <OrbitControls enableZoom={false} />
       </Canvas>
     </div>
   );
 }
 
-// Main Glass Panel in the center
+// Main Glass Panel (Now 4x Wider)
 function GlassPanel({ position, scale }) {
   return (
-    <Plane args={[3, 2]} position={position} scale={scale} receiveShadow>
+    <Plane args={[4, 2]} position={position} scale={scale} receiveShadow>
       <meshStandardMaterial
         transparent
-        opacity={0.08} // Ultra-transparent
-        roughness={0.02} // Smoother surface
-        metalness={0.9}  // Reflective, glassy
-        color="#4fa8ff"  // Soft blue tint
+        opacity={0.15}  // Keeps it semi-transparent but visible
+        roughness={0.05} // Smooth, no crystal patterns
+        metalness={0.9}  // Reflective, real glass feel
+        color="#4fa8ff"  // Strong bright blue
+        emissive="#4fa8ff" // Adds brightness glow
+        emissiveIntensity={0.8} // Glow strength
       />
     </Plane>
   );
 }
 
-// Surrounding Glass Frame for the header effect
+// Surrounding Glass Frame for 3D Effect
 function GlassFrame({ position, rotation, scale }) {
   return (
     <Plane args={[1, 0.2]} position={position} rotation={rotation} scale={scale} castShadow>
       <meshStandardMaterial
         transparent
-        opacity={0.12} // More transparent for the frame
-        roughness={0.05} // Smooth
-        metalness={1}  // High reflectivity
-        color="#4fa8ff" // Bright blue color
+        opacity={0.2}  // Slightly more visible frame
+        roughness={0.02} // Smooth, no distortions
+        metalness={1}  // Full reflective effect
+        color="#4fa8ff" // Bright blue
+        emissive="#4fa8ff" // Adds glowing effect
+        emissiveIntensity={0.9} // Stronger blue glow
       />
     </Plane>
   );
