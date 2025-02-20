@@ -6,7 +6,7 @@ export default function TransparentGlassPanel() {
   return (
     <div className="w-full h-[500px] relative flex items-center justify-center">
       {/* Header Container with Specified Styles */}
-      <div
+      {/* <div
         className="absolute top-5 w-[400px] h-[80px] flex items-center justify-center text-white text-lg font-bold"
         style={{
           width: "100px",
@@ -18,11 +18,7 @@ export default function TransparentGlassPanel() {
           background: "linear-gradient(to bottom, rgba(51, 60, 60, 0.3), rgba(143, 244, 255, 0.9), rgba(0, 255, 255, 0.3))",
           border: "3px solid rgba(0, 229, 255, 0.8)",
           outline: "3px solid rgba(0, 255, 255, 0.5)"
-        }}
-        
-      >
-        {/* Optional content inside the header */}
-      </div>
+        }}></div> */}
 
       <Canvas shadows camera={{ position: [0, 0, 12], fov: 50 }}>
         {/* Soft ambient light for even brightness */}
