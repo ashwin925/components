@@ -4,6 +4,7 @@ import GlassEffect from './components/GlassEffect.js';
 import CardReveal from "./components/characterReveal/CharacterReveal.js";
 import GlassPanel from './components/divComponent/glassDiv.js';
 import Scene from "./components/Scene.js";
+import SurroundingHeader3D from "./components/header/SurroundingHeader3D.js";
 
 function App() {
   return (
@@ -12,12 +13,15 @@ function App() {
       {/* <GlassEffect /> */}
       {/* <CardReveal /> */}
     </div>
-          <div>
+          {/* <div>
             <GlassPanel />
-          </div>
-          <div style={{ position: "relative", width: "100vw", height: "100vh" }}>
-           {/* <Scene /> */}
-          </div>
+          </div> */}
+          {/* <div style={{ position: "relative", width: "100vw", height: "100vh" }}>
+            <Scene /> 
+          </div> */}
+          <div className="flex justify-center items-center h-screen bg-black">
+            <SurroundingHeader3D headerText="3D Header" />
+        </div>
     </div>
   );
 }
