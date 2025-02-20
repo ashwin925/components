@@ -25,7 +25,7 @@ function GlassPanel({ position, scale }) {
     <Plane args={[4, 2, 64, 64]} position={position} scale={scale} receiveShadow>
       <meshStandardMaterial
         transparent
-        opacity={0.3}  // More transparent but still visible
+        opacity={0.7}  // More transparent but still visible
         roughness={0}   // Ultra-smooth surface
         metalness={0.7} // Keeps a slight metallic sheen without over-reflection
         color="#3399ff"  // A brighter blue
