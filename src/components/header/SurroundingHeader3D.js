@@ -4,7 +4,7 @@ import { Plane, OrbitControls } from "@react-three/drei";
 
 export default function TransparentGlassPanel() {
   return (
-    <div className="w-full h-[500px] relative">
+    <div className=" w-full h-[500px] relative ">
       <Canvas shadows camera={{ position: [0, 0, 12], fov: 50 }}>
         {/* Soft ambient light for even brightness */}
         <ambientLight intensity={2} />
