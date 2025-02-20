@@ -21,7 +21,7 @@ function App() {
           </div> */}
           <div className="flex justify-center items-center h-screen bg-black">
             <SurroundingHeader3D headerText="3D Header" />
-        </div>
+          </div>
     </div>
   );
 }
