@@ -1,13 +1,11 @@
-import React from "react";
-import "./glassDiv.css";
-import Header from "./header";
+import SurroundingHeader3D from "./header";
 
-function GlassPanel() {
+function App() {
   return (
-    <div className="glass-panel">
-      <Header />
+    <div className="flex justify-center items-center h-screen bg-black">
+      <SurroundingHeader3D headerText="My 3D Header" />
     </div>
   );
 }
 
-export default GlassPanel;
+export default App;

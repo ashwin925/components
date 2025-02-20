@@ -9,11 +9,11 @@ function App() {
   return (
     <div>
     <div style={{ display: "flex", justifyContent: "center", alignItems: "center", background: "#1e1e1e" }}>
-      <GlassEffect />
+      {/* <GlassEffect /> */}
       {/* <CardReveal /> */}
     </div>
           <div>
-            {/* <GlassPanel /> */}
+            <GlassPanel />
           </div>
           <div style={{ position: "relative", width: "100vw", height: "100vh" }}>
            {/* <Scene /> */}
