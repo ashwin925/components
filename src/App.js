@@ -13,15 +13,15 @@ function App() {
       {/* <GlassEffect /> */}
       {/* <CardReveal /> */}
     </div>
-          {/* <div>
+          <div>
             <GlassPanel />
-          </div> */}
+          </div>
           {/* <div style={{ position: "relative", width: "100vw", height: "100vh" }}>
             <Scene /> 
           </div> */}
-          <div className="flex justify-center items-center h-screen bg-black">
+          {/* <div className="flex justify-center items-center h-screen bg-black">
             <SurroundingHeader3D />
-          </div>
+          </div> */}
     </div>
   );
 }

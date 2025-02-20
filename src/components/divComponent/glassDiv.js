@@ -1,9 +1,10 @@
-import SurroundingHeader3D from "./header";
+import SurroundingHeader3D from "../header/SurroundingHeader3D";
+import "./glassDiv.css";
 
 function App() {
   return (
-    <div className="flex justify-center items-center h-screen bg-black">
-      <SurroundingHeader3D headerText="My 3D Header" />
+    <div className="glass-panel flex justify-center items-center h-screen">
+      <SurroundingHeader3D />
     </div>
   );
 }
