@@ -18,7 +18,7 @@ export default function GlassHeader3D() {
         <pointLight position={[5, 5, 10]} intensity={3} />
 
         {/* Curved Glass Header */}
-        <CurvedGlass position={[0, 2, -1]} scale={[4, 1.2, 0.5]} />
+        <CurvedGlass position={[0, 2, -1]} scale={[4, 1.2, 1]} />
 
         {/* Bloom Effect for Glow */}
         <EffectComposer>
@@ -35,17 +35,18 @@ export default function GlassHeader3D() {
 function CurvedGlass({ position, scale }) {
   // Create geometry with curvature applied
   const geometry = useMemo(() => {
-    const geo = new THREE.PlaneGeometry(6, 2, 32, 32); // High segments for smooth bending
+    const geo = new THREE.PlaneGeometry(6, 2, 64, 64); // More subdivisions for smoother curvature
 
     // Apply vertex displacement for curvature
     const pos = geo.attributes.position;
     for (let i = 0; i < pos.count; i++) {
       const x = pos.getX(i);
-      const zCurve = Math.sin((x / 3) * Math.PI) * 1.2; // Smooth curvature effect
+      const curveAmount = 1.5; // More pronounced curvature
+      const zCurve = Math.sin((x / 3) * Math.PI) * curveAmount;
       pos.setZ(i, zCurve);
     }
-    pos.needsUpdate = true;
-    
+    geo.attributes.position.needsUpdate = true;
+
     return geo;
   }, []);
 
@@ -53,12 +54,12 @@ function CurvedGlass({ position, scale }) {
     <mesh geometry={geometry} position={position} scale={scale}>
       <meshStandardMaterial
         transparent
-        opacity={0.5}
-        roughness={0.1}
-        metalness={0.9}
+        opacity={0.4}
+        roughness={0.05}
+        metalness={1}
         color="#4fa8ff"
         emissive="#4fa8ff"
-        emissiveIntensity={0.8}
+        emissiveIntensity={0.9}
       />
     </mesh>
   );
