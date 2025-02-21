@@ -18,7 +18,7 @@ export default function GlassHeader3D() {
         <pointLight position={[5, 5, 10]} intensity={3} />
 
         {/* Curved Glass Header */}
-        <CurvedGlass position={[0, 1, 0]} scale={[6, 2, 1]} />
+        <CurvedGlass position={[0, 2, -1]} scale={[4, 1.2, 0.5]} />
 
         {/* Bloom Effect for Glow */}
         <EffectComposer>
@@ -33,16 +33,21 @@ export default function GlassHeader3D() {
 
 // 3D Curved Glass Component
 function CurvedGlass({ position, scale }) {
-  // Creating a custom geometry to achieve curvature
-  const curve = new THREE.CatmullRomCurve3([
-    new THREE.Vector3(-3, 0, -1),
-    new THREE.Vector3(-1.5, 1, 0),
-    new THREE.Vector3(0, 1.5, 0.5),
-    new THREE.Vector3(1.5, 1, 0),
-    new THREE.Vector3(3, 0, -1)
-  ]);
+  // Define geometry: a slightly bent plane
+  const geometry = new THREE.PlaneGeometry(6, 2, 32, 32); // More segments for smooth bending
 
-  const geometry = new THREE.TubeGeometry(curve, 64, 0.3, 8, false);
+  // Apply vertex displacement for curvature
+  const curveModifier = (geo) => {
+    const pos = geo.attributes.position;
+    for (let i = 0; i < pos.count; i++) {
+      const x = pos.getX(i);
+      const y = pos.getY(i);
+      const zCurve = Math.sin((x / 3) * Math.PI) * 1.2; // Curve effect
+      pos.setZ(i, zCurve);
+    }
+    pos.needsUpdate = true;
+  };
+  curveModifier(geometry);
 
   return (
     <mesh geometry={geometry} position={position} scale={scale}>
@@ -53,7 +58,7 @@ function CurvedGlass({ position, scale }) {
         metalness={1}
         color="#4fa8ff"
         emissive="#4fa8ff"
-        emissiveIntensity={1.5}
+        emissiveIntensity={1.2}
       />
     </mesh>
   );
