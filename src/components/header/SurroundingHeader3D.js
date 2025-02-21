@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useMemo, useEffect } from "react";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
 import { EffectComposer, Bloom } from "@react-three/postprocessing";
@@ -33,32 +33,32 @@ export default function GlassHeader3D() {
 
 // 3D Curved Glass Component
 function CurvedGlass({ position, scale }) {
-  // Define geometry: a slightly bent plane
-  const geometry = new THREE.PlaneGeometry(6, 2, 32, 32); // More segments for smooth bending
+  // Create geometry with curvature applied
+  const geometry = useMemo(() => {
+    const geo = new THREE.PlaneGeometry(6, 2, 32, 32); // High segments for smooth bending
 
-  // Apply vertex displacement for curvature
-  const curveModifier = (geo) => {
+    // Apply vertex displacement for curvature
     const pos = geo.attributes.position;
     for (let i = 0; i < pos.count; i++) {
       const x = pos.getX(i);
-      const y = pos.getY(i);
-      const zCurve = Math.sin((x / 3) * Math.PI) * 1.2; // Curve effect
+      const zCurve = Math.sin((x / 3) * Math.PI) * 1.2; // Smooth curvature effect
       pos.setZ(i, zCurve);
     }
     pos.needsUpdate = true;
-  };
-  curveModifier(geometry);
+    
+    return geo;
+  }, []);
 
   return (
     <mesh geometry={geometry} position={position} scale={scale}>
       <meshStandardMaterial
         transparent
         opacity={0.5}
-        roughness={0.05}
-        metalness={1}
+        roughness={0.1}
+        metalness={0.9}
         color="#4fa8ff"
         emissive="#4fa8ff"
-        emissiveIntensity={1.2}
+        emissiveIntensity={0.8}
       />
     </mesh>
   );
