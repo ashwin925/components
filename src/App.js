@@ -4,7 +4,7 @@ import GlassEffect from './components/GlassEffect.js';
 import CardReveal from "./components/characterReveal/CharacterReveal.js";
 import GlassPanel from './components/divComponent/glassDiv.js';
 import Scene from "./components/Scene.js";
-import HeaderWrapper from "./components/header/SurroundingHeader3D.js";
+import HeaderWrapper from "./components/header/headerWrap.js";
 
 function App() {
   return (

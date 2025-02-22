@@ -1,4 +1,4 @@
-import SurroundingHeader3D from "../header/SurroundingHeader3D";
+import SurroundingHeader3D from "../header/headerWrap";
 import "./glassDiv.css";
 
 function App() {
