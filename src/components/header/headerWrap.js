@@ -1,8 +1,8 @@
 import React from "react";
 import "./headerWrap.css";
 
-const BarrelShape = () => {
-  return <div className="barrel-shape"></div>;
+const BarrelGlass = () => {
+  return <div className="barrel-glass"></div>;
 };
 
-export default BarrelShape;
+export default BarrelGlass;
