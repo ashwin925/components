@@ -19,9 +19,9 @@ function App() {
     {/* <div>
       <BarrelHeader />
     </div> */}
-
+    <div style={{background: "black"}}>
+    </div>
     <GlassPanel />
-
     {/* <div style={{ position: "relative", width: "100vw", height: "100vh" }}>
       <Scene /> 
     </div> */}
