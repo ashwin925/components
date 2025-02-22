@@ -34,7 +34,7 @@
 
 .about-title {
   font-size: 28px;
-  
+  margin-top: -100px;
   font-weight: bold;
   color: black;
   text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
@@ -42,6 +42,7 @@
 
 .about-text {
   font-size: 22px;
+  margin-left: 150px;
   font-weight: bold;
   display: inline-block;
   background: linear-gradient(90deg, #ff0000, #ff7300, #ffeb00, #47ff00, #00ffee, #005eff, #7a00ff, #ff00c8);

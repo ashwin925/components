@@ -12,8 +12,8 @@ const GlassPanel = () => {
         <div className="about-me-container">
           <h2 className="about-title">About Me</h2>
           <p className="about-text">
-            Passionate developer transforming ideas into reality. I create immersive web experiences, blending design and 
-            functionality to push boundaries in the digital world.
+            Passionate developer transforming ideas into reality. I  create <br />immersive web experiences, blending design and 
+            functionality to <br /> push boundaries in the digital world.
           </p>
         </div>
       </div>
