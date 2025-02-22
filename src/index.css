@@ -11,3 +11,21 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+@font-face {
+  font-family: 'Tobiroto';
+  src: url('./fonts/Tobiroto-7OwyP.otf') format('truetype'); /* Adjust filename if needed */
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'CustomFont'; /* Replace with the actual font name */
+  src: url('./fonts/Cybero.ttf') format('truetype'); /* Update the filename */
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'zfont'; /* Replace with the actual font name */
+  src: url('./fonts/Futurez.ttf') format('truetype'); /* Update the filename */
+  font-weight: normal;
+  font-style: normal;
+}

@@ -18,14 +18,15 @@ const GlassPanel = () => {
         <BarrelGlass />
 
         {/* About Me Section */}
-        {/* <div className="about-me-container">
+        <div className="about-me-container">
           <h2 className="about-title">About Me</h2>
           <p className="about-text">
-            Passionate developer transforming ideas into reality. I create <br />
-            immersive web experiences, blending design and functionality to <br />
-            push boundaries in the digital world.
+            I dream, I build, I shape, turning concepts into skies! <br />
+            Logic sharp, pixels-tight, crafting worlds in neon light! <br />
+            No limits, no lines, no fear, no doubt, break the barrier! <br />
+            I don’t follow- I lead, I shape, I set the trend, my friend.
           </p>
-        </div> */}
+        </div>
       </div>
     </div>
   );

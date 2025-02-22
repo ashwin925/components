@@ -34,37 +34,24 @@
   color: white;
 }
 
-
-.about-me-container {
-  position: absolute;
-  margin-top: 40px;
-  padding: 20px;
-  text-align: center;
-}
-
-.about-title {
-  font-size: 28px;
-  margin-top: -100px;
+.about-title, .about-text {
+  font-size: 26px;
+  margin-top: 20px;
+  margin-left: 170px;
   font-weight: bold;
-  color: black;
-  text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
-}
-
-.about-text {
-  font-size: 22px;
-  margin-left: 150px;
-  font-weight: bold;
-  display: inline-block;
-  background: linear-gradient(90deg, #ff0000, #ff7300, #ffeb00, #47ff00, #00ffee, #005eff, #7a00ff, #ff00c8);
-  background-size: 300% 300%;
-  color: black; 
+  font-family: 'orbitron', sans-serif;
+  color: cyan; /* Cyan glass effect */
+  text-shadow: 
+    0px 0px 5px rgba(79, 168, 255, 0.6), /* Cyan glow */
+    0px 0px 10px rgba(10, 50, 120, 0.8), /* Dark blue outer glow */
+    0px 0px 15px rgba(79, 168, 255, 0.4); /* Slight inner glass glow */
+  -webkit-text-stroke: 1px rgb(0, 0, 0); 
+  background: rgba(79, 168, 255, 0.5); 
   -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: animatedColors 6s infinite linear;
+  background-clip: text;
 }
-
-@keyframes animatedColors {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+.about-title{
+  margin-top: 130px;
+  font-size: 40px;
+  font-family: 'zfont', sans-serif;
 }
