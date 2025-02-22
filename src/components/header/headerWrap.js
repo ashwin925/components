@@ -1,5 +1,5 @@
 import * as THREE from 'three';
-import { Canvas, useFrame } from '@react-three/fiber';
+import { Canvas, useFrame, extend } from '@react-three/fiber';
 import { useRef } from 'react';
 import { shaderMaterial } from '@react-three/drei';
 
@@ -28,6 +28,8 @@ const BarrelDistortionMaterial = shaderMaterial(
   }
   `
 );
+
+extend({ BarrelDistortionMaterial });
 
 const BarrelHeader = () => {
   const ref = useRef();
