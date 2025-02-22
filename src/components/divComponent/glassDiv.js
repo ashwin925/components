@@ -1,12 +1,13 @@
-import SurroundingHeader3D from "../header/headerWrap";
-import "./glassDiv.css";
+import React from "react";
+import  BarrelGlass from './headerWrap'
+import "./glassDiv.css"; 
 
-function App() {
+const GlassPanel = () => {
   return (
-    <div className="glass-panel flex justify-center items-center h-screen">
-      <SurroundingHeader3D />
+    <div className="glass-panel">
+      <BarrelGlass />
     </div>
   );
-}
+};
 
-export default App;
+export default GlassPanel;

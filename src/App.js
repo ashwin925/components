@@ -5,8 +5,8 @@ import GlassEffect from './components/GlassEffect.js';
 import CardReveal from "./components/characterReveal/CharacterReveal.js";
 import GlassPanel from './components/divComponent/glassDiv.js';
 import Scene from "./components/Scene.js";
-import HeaderWrapper from "./components/header/headerWrap.js";
-import BarrelHeader from "./components/header/headerWrap.js";
+import HeaderWrapper from "./components/divComponent/headerWrap.js";
+import BarrelHeader from "./components/divComponent/headerWrap.js";
 
 function App() {
   return (
@@ -15,15 +15,16 @@ function App() {
       {/* <GlassEffect /> */}
       {/* <CardReveal /> */}
     {/* </div> */}
-    <div>
+
+    {/* <div>
       <BarrelHeader />
-    </div>
-          {/* <div style={{ position: "relative", width: "100vw", height: "100vh" }}>
-            <Scene /> 
-          </div> */}
-          {/* <div className="flex justify-center items-center h-screen bg-black">
-            <SurroundingHeader3D />
-          </div> */}
+    </div> */}
+
+    <GlassPanel />
+
+    {/* <div style={{ position: "relative", width: "100vw", height: "100vh" }}>
+      <Scene /> 
+    </div> */}
     </div>
   );
 }
