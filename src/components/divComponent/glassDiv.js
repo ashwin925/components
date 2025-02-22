@@ -6,7 +6,6 @@ const GlassPanel = () => {
   return (
     <div className="glass-panel">
       <BarrelGlass />
-      <BarrelGlass />
     </div>
   );
 };
