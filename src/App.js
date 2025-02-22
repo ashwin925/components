@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import { Canvas } from '@react-three/fiber';
-import GlassEffect from './components/GlassEffect.js';
+import GlassEffect from './components/glassShatter/GlassEffect.js';
 import CardReveal from "./components/characterReveal/CharacterReveal.js";
 import GlassPanel from './components/divComponent/glassDiv.js';
 import Scene from "./components/Scene.js";

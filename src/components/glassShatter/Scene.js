@@ -1,8 +1,8 @@
 import { Canvas } from "@react-three/fiber";
 import { useState } from "react";
-import Glass from "./Glass"; // Your intact glass component that triggers onShatter
+import Glass from "./glassShatter/Glass"; // Your intact glass component that triggers onShatter
 import ShatteringGlass from "./ShatteringGlass";
-import Content from "./Content"; // Revealed content component
+import Content from "./glassShatter/Content"; // Revealed content component
 
 export default function Scene() {
   const [shattered, setShattered] = useState(false);
