@@ -11,16 +11,13 @@ import BarrelHeader from "./components/header/headerWrap.js";
 function App() {
   return (
     <div>
-    <div style={{ display: "flex", justifyContent: "center", alignItems: "center", background: "#1e1e1e" }}>
+    {/* <div style={{ display: "flex", justifyContent: "center", alignItems: "center", background: "#1e1e1e" }}> */}
       {/* <GlassEffect /> */}
       {/* <CardReveal /> */}
+    {/* </div> */}
+    <div>
+      <BarrelHeader />
     </div>
-          <div>
-          <Canvas>
-            <ambientLight intensity={0.5} />
-            <BarrelHeader />
-          </Canvas>
-          </div>
           {/* <div style={{ position: "relative", width: "100vw", height: "100vh" }}>
             <Scene /> 
           </div> */}
