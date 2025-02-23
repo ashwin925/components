@@ -1,26 +1,31 @@
-/* Glass-like Barrel Shape */
-.barrel-glass {
+.nav-links {
+  display: flex;
+  justify-content: space-around; /* Spread them evenly */
+  width: 100%;
   position: absolute;
-  width: 1150px;
-  height: 60px;
-  margin-left: -75px;
-  margin-top:30px;
-  background: linear-gradient(to bottom, rgba(0, 255, 255, 0.3), rgba(143, 244, 255), rgba(0, 255, 255, 0.3));
-  backdrop-filter: blur(5px) brightness(1.2);
-  border: 3px solid rgba(0, 229, 255, 0.8);
-  box-shadow: 0px 0px 15px rgba(0, 150, 255, 0.4);
-  /* transform: scaleY(0.8) scaleX(0.5); */
-  /* border-radius: 40% / 50%; */
+  top: 50%;
+  transform: translateY(-50%);
 }
-.image-holder{
-  width: 250px;
-  height: 250px;
-  position: absolute;
-  margin-top: 150px;
-  margin-left: -80px;
-  border-radius: 10px;
-  background: linear-gradient(to bottom, rgba(0, 255, 255, 0.3), rgba(143, 244, 255, 0.9), rgba(0, 255, 255, 0.3));
-  backdrop-filter: blur(5px) brightness(1.2);
-  border: 3px solid rgba(0, 229, 255, 0.8);
-  box-shadow: 0px 0px 15px rgba(0, 150, 255, 0.4);
+
+.glass-text {
+  font-size: 27px;
+  font-weight: bold;
+  color: transparent; /* Make text transparent */
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: 0.3s ease-in-out;
+  cursor: pointer;
+  text-shadow: 
+    0px 0px 5px rgba(79, 168, 255, 0.6), /* Cyan glow */
+    0px 0px 10px rgba(10, 50, 120, 0.8), /* Dark blue outer glow */
+    0px 0px 15px rgba(79, 168, 255, 0.4); /* Slight inner glass glow */
+  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.4); /* Semi-transparent stroke */
+  background: rgba(79, 168, 255, 0.3); 
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+.glass-text:hover {
+  transform: scale(1.1);
+  text-shadow: 0px 0px 12px rgba(255, 255, 255, 0.8);
 }
