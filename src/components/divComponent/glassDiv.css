@@ -48,9 +48,10 @@
   line-height: 1.5;
   color: cyan; /* Cyan glass effect */
   text-shadow: 
-    0px 0px 5px rgba(79, 168, 255, 0.6), /* Cyan glow */
-    0px 0px 10px rgba(10, 50, 120, 0.8), /* Dark blue outer glow */
-    0px 0px 15px rgba(79, 168, 255, 0.4); /* Slight inner glass glow */
+    0px 0px 5px rgba(0, 0, 128, 0.6),  /* Deep navy glow */
+    0px 0px 10px rgba(10, 50, 120, 0.8), /* Outer navy blue glow */
+    0px 0px 15px rgba(0, 0, 128, 0.5);  /* Soft inner navy glow */
+
   -webkit-text-stroke: 1.5px rgb(0, 0, 0); 
   background: rgba(79, 168, 255, 0.5); 
   -webkit-background-clip: text;
