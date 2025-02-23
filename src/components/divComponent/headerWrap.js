@@ -1,5 +1,6 @@
 import React from "react";
 import "./headerWrap.css";
+import me from '../images/me.jpg'
 
 const BarrelGlass = () => {
   return (
@@ -12,7 +13,7 @@ const BarrelGlass = () => {
         </nav>
       </div>
       <div className="image-holder">
-        <img src="your-image.jpg" alt="Profile" className="profile-image" />
+        <img src={me} alt="Profile" className="profile-image" />
       </div>
     </div>
   );
