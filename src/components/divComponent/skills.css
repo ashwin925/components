@@ -2,17 +2,17 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 20px; /* Reduced gap for a tighter layout */
 }
 
 .skills-section {
   text-align: center;
-  width: 90%;
+  width: 60%;
 }
 
 .skills-title {
-  font-size: 2rem;
+  font-size: 25px;
   font-weight: bold;
+  font-family: ;
   text-transform: uppercase;
   color: cyan;
   margin-bottom: 10px; /* Reduced margin */
