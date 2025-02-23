@@ -18,8 +18,8 @@
 
 /* Glass Panel */
 .glass-panel {
-  width: min(90%, 1000px); /* Scales dynamically but won’t exceed 1000px */
-  height: auto;
+  width: min(90%, 1000px); 
+  height: 485px;
   background: rgba(255, 255, 255, 0.1);
   border-radius: 20px;
   margin: 20px auto;
@@ -52,7 +52,7 @@
 }
 
 .about-title {
-  margin-top: clamp(50px, 10vw, 130px);
+  margin-top: 40px;
   font-size: clamp(24px, 5vw, 40px);
   font-family: 'zfont', sans-serif;
 }
