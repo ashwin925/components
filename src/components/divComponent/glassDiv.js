@@ -2,6 +2,7 @@ import React from "react";
 // import { Canvas } from "@react-three/fiber";
 // import Particles from './Particles';
 import BarrelGlass from "./headerWrap";
+import SkillsSection from "./skills";
 import "./glassDiv.css";
 
 const GlassPanel = () => {
@@ -29,7 +30,7 @@ const GlassPanel = () => {
         </div>
       </div>
       <div className="glass-panel-two">
-        <h1>jii</h1>
+        <SkillsSection />
       </div>
       <div className="glass-panel-three">
         <h1>jii</h1>
