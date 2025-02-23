@@ -10,14 +10,20 @@
 }
 
 .skills-title {
-  font-size: 25px;
+  font-size: 26px;
   font-weight: bold;
-  font-family: ;
+  font-family: 'zfont', sans-serif;
   text-transform: uppercase;
   color: cyan;
-  margin-bottom: 10px; /* Reduced margin */
-  letter-spacing: 2px;
-  text-shadow: 0px 0px 8px rgba(0, 255, 255, 0.8);
+  letter-spacing: 3px;
+  text-shadow: 
+    0px 0px 5px navy, 
+    0px 0px 10px white, 
+    0px 0px 15px white;
+  -webkit-text-stroke: 1.2px rgb(0, 0, 0); 
+  background: rgba(79, 168, 255, 0.5);
+  -webkit-background-clip: text;
+  background-clip: text;
 }
 
 .skills-row {
