@@ -9,7 +9,7 @@
   backdrop-filter: blur(5px) brightness(1.2);
   outline: 2px solid black;
   border: 3px solid rgba(0, 229, 255, 0.8);
-  box-shadow: inset 0px 0px 0px 2px rgb(0, 0, 255);
+  box-shadow: inset 0px 0px 0px 2px black;
   z-index: 100; /* Increased to ensure it appears above the text */
 }
 .image-holder{
