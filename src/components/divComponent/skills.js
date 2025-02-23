@@ -1,38 +1,67 @@
 import React from "react";
-import { FaHtml5, FaCss3Alt, FaJs, FaPython, FaJava, FaReact, FaGit, FaGithub, FaDocker, FaFigma } from "react-icons/fa";
-import { SiTypescript, SiNextdotjs, SiExpress, SiTailwindcss, SiBootstrap, SiMongodb } from "react-icons/si";
-import "./skills.css"; // Importing the CSS file
+import { motion } from "framer-motion";
+import { FaHtml5, FaCss3Alt, FaJs, FaJava, FaPython, FaReact, FaNodeJs, FaGitAlt, FaGithub, FaDocker } from "react-icons/fa";
+import { SiTypescript, SiNextdotjs, SiExpress, SiTailwindcss, SiBootstrap, SiMongodb, SiFigma, SiFirebase } from "react-icons/si";
+import "./skills.css";
 
 const Skills = () => {
+  const skillsData = [
+    {
+      title: "Languages",
+      skills: [
+        { icon: <FaHtml5 /> },
+        { icon: <FaCss3Alt /> },
+        { icon: <FaJs /> },
+        { icon: <SiTypescript /> },
+        { icon: <FaJava /> },
+        { icon: <FaPython /> },
+      ],
+    },
+    {
+      title: "Frameworks",
+      skills: [
+        { icon: <FaReact /> },
+        { icon: <SiNextdotjs /> },
+        { icon: <SiExpress /> },
+        { icon: <FaNodeJs /> },
+        { icon: <SiTailwindcss /> },
+        { icon: <SiBootstrap /> },
+      ],
+    },
+    {
+      title: "Tools",
+      skills: [
+        { icon: <SiMongodb /> },
+        { icon: <FaGitAlt /> },
+        { icon: <FaGithub /> },
+        { icon: <SiFigma /> },
+        { icon: <FaDocker /> },
+        { icon: <SiFirebase /> },
+      ],
+    },
+  ];
+
   return (
     <div className="skills-container">
-      {/* Languages Row */}
-      <div className="skills-row">
-        <FaHtml5 className="skill-icon" title="HTML5" />
-        <FaCss3Alt className="skill-icon" title="CSS3" />
-        <FaJs className="skill-icon" title="JavaScript" />
-        <SiTypescript className="skill-icon" title="TypeScript" />
-        <FaJava className="skill-icon" title="Java" />
-        <FaPython className="skill-icon" title="Python" />
-      </div>
-
-      {/* Frameworks/Libraries Row */}
-      <div className="skills-row">
-        <FaReact className="skill-icon" title="React" />
-        <SiNextdotjs className="skill-icon" title="Next.js" />
-        <SiExpress className="skill-icon" title="Express.js" />
-        <SiTailwindcss className="skill-icon" title="Tailwind CSS" />
-        <SiBootstrap className="skill-icon" title="Bootstrap" />
-      </div>
-
-      {/* Tools Row */}
-      <div className="skills-row">
-        <SiMongodb className="skill-icon" title="MongoDB" />
-        <FaGit className="skill-icon" title="Git" />
-        <FaGithub className="skill-icon" title="GitHub" />
-        <FaFigma className="skill-icon" title="Figma" />
-        <FaDocker className="skill-icon" title="Docker" />
-      </div>
+      {skillsData.map((category, index) => (
+        <div key={index} className="skills-section">
+          <h2 className="skills-title">{category.title}</h2>
+          <div className="skills-row">
+            {category.skills.map((skill, i) => (
+              <motion.div
+                key={i}
+                className="skill-item"
+                whileHover={{ scale: 1.15 }}
+                initial={{ opacity: 0, scale: 0.5 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.3, delay: i * 0.1 }}
+              >
+                <div className="skill-icon">{skill.icon}</div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      ))}
     </div>
   );
 };
