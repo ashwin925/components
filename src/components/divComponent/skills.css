@@ -29,7 +29,7 @@
 .skills-row {
   display: flex;
   justify-content: center;
-  gap: 18 px; /* Reduced gap */
+  gap: 18px; /* Reduced gap */
   flex-wrap: wrap;
 }
 
