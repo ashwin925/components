@@ -34,6 +34,9 @@ const GlassPanel = () => {
       <div className="glass-panel-three">
         <h1>jii</h1>
       </div>
+      <div className="glass-panel-four">
+        <h1>jii</h1>
+      </div>
     </div>
   );
 };
