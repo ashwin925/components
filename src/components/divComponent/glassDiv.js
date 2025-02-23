@@ -10,7 +10,7 @@ const GlassPanel = () => {
       {/* 3D Bubbles (Behind the Glass Panel) */}
       <Canvas className="canvas-container">
         <ambientLight intensity={0.5} />
-        <Particles count={150} /> {/* Call the Particles component */}
+        <Particles count={150} /> 
       </Canvas>
 
       {/* Glass Panel (Front Layer) */}
