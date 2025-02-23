@@ -1,35 +1,31 @@
-.container-wrapper {
+/* .container-wrapper {
   position: relative;
   width: 100%;
   height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  overflow: hidden; /* Prevents overflow */
+  overflow: hidden; 
 }
-
-/* Particles are behind */
-.canvas-container {
+  .canvas-container {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: 0; /* Ensures it's behind */
-}
+  z-index: 0; 
+}  */
 
 /* Glass Panel */
 .glass-panel {
-  position: absolute;
-  width: 1000px;
-  height: 460px;
+  width: min(90%, 1000px); /* Scales dynamically but won’t exceed 1000px */
+  height: auto;
   background: rgba(255, 255, 255, 0.1);
   border-radius: 20px;
+  margin: 40px auto; /* Centers it */
   outline: 2px solid rgb(0, 0, 255);
-  /* outline-offset: 3px; */
   box-shadow: inset 0px 0px 0px 2px rgb(0, 0, 255);
-  backdrop-filter: blur(0px);
-  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
   background: linear-gradient(to bottom, rgba(0, 255, 255, 0.3), rgba(143, 244, 255, 0.5), rgba(0, 255, 255, 0.3));
   border: 2px solid cyan;
   padding: 20px;
@@ -37,79 +33,26 @@
   color: white;
 }
 
+/* About Section Text */
 .about-title, .about-text {
-  font-size: 25px;
-  margin-top: px;
-  margin-left: 170px;
+  font-size: clamp(18px, 2.5vw, 25px); /* Dynamically scales */
   font-weight: bold;
-  font-family: 'orbitron', sans-serif;
+  font-family: 'Orbitron', sans-serif;
   letter-spacing: 1px;
-  word-spacing: 0px;
   line-height: 1.5;
-  color: cyan; /* Cyan glass effect */
+  color: cyan;
   text-shadow: 
-    0px 0px 5px navy, /* Cyan glow */
-    0px 0px 10px white, /* Dark blue outer glow */
-    0px 0px 15px white; /* Slight inner glass glow */
-  -webkit-text-stroke: 1.5px rgb(0, 0, 0); 
-  background: rgba(79, 168, 255, 0.5); 
+    0px 0px 5px navy, 
+    0px 0px 10px white, 
+    0px 0px 15px white;
+  -webkit-text-stroke: 1.2px rgb(0, 0, 0); 
+  background: rgba(79, 168, 255, 0.5);
   -webkit-background-clip: text;
   background-clip: text;
 }
-.about-title{
-  margin-top: 130px;
-  font-size: 40px;
+
+.about-title {
+  margin-top: clamp(50px, 10vw, 130px);
+  font-size: clamp(24px, 5vw, 40px);
   font-family: 'zfont', sans-serif;
-  -webkit-text-stroke: 1.2px rgb(0, 0, 0); 
-}
-
-
-/* Responsive Glass Panel */
-@media screen and (max-width: 1200px) {
-  .glass-panel {
-    width: 90%;
-    height: auto;
-    padding: 15px;
-  }
-  .about-title {
-    font-size: 35px;
-    margin-top: 100px;
-  }
-  .about-text {
-    font-size: 22px;
-    margin-left: 100px;
-  }
-}
-
-@media screen and (max-width: 900px) {
-  .glass-panel {
-    width: 85%;
-    height: auto;
-    padding: 10px;
-  }
-  .about-title {
-    font-size: 30px;
-    margin-top: 90px;
-  }
-  .about-text {
-    font-size: 20px;
-    margin-left: 50px;
-  }
-}
-
-@media screen and (max-width: 600px) {
-  .glass-panel {
-    width: 80%;
-    height: auto;
-    padding: 10px;
-  }
-  .about-title {
-    font-size: 28px;
-    margin-top: 80px;
-  }
-  .about-text {
-    font-size: 18px;
-    text-align: center;
-    margin-left: 0;
-  }
 }

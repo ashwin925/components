@@ -1,48 +1,56 @@
 /* Glass-like Barrel Shape */
 .barrel-glass {
-  position: absolute;
-  width: 1150px;
-  height: 60px;
-  margin-left: -75px;
+  width: min(115%, 1250px); 
+  height: clamp(40px, 5vw, 60px);
   margin-top: 30px;
+  margin-left: -80px;
   background: linear-gradient(to bottom, rgba(0, 0, 128), rgba(65, 105, 225, 0.8), rgba(0, 0, 128));
   backdrop-filter: blur(5px) brightness(1.2);
   outline: 2px solid cyan;
   border: 3px solid black;
   box-shadow: inset 0px 0px 0px 2px cyan;
-  z-index: 100; /* Increased to ensure it appears above the text */
+  z-index: 100;
 }
-.image-holder{
-  width: 250px;
-  height: 250px;
-  position: absolute;
-  margin-top: 150px;
-  margin-left: -80px;
+
+
+/* Image Container */
+.image-holder {
+  width: clamp(100px, 16vw, 200px); /* Reduced size */
+  height: clamp(100px, 16vw, 200px); /* Keep aspect ratio */
+  margin: clamp(20px, 8vw, 120px) 0 0; /* Adjusted top margin, removed auto centering */
   border-radius: 10px;
   background: linear-gradient(to bottom, rgba(0, 0, 128, 0.7), rgba(65, 105, 225, 0.3), rgba(0, 0, 128, 0.7));
   backdrop-filter: blur(5px) brightness(1.2);
   outline: 2px solid blue;
   border: 3px solid black;
   box-shadow: inset 0px 0px 0px 2px black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
 }
+
 .profile-image {
   width: 100%;
   height: 100%;
   border-radius: 15px;
-  object-fit: cover; /* Ensures the image fully covers the container */
-  filter: brightness(0.9) contrast(1.1); /* Adjusts brightness/contrast for a sharper look */
+  object-fit: cover;
+  filter: brightness(0.9) contrast(1.1);
 }
+
+/* Navigation Links */
 .nav-links {
   display: flex;
-  justify-content: space-around; /* Spread them evenly */
+  justify-content: space-around;
   width: 100%;
   position: absolute;
   top: 50%;
-  transform: translateY(-50%);
+  transform: translateY(-55%);
 }
 
+/* Glass Text */
 .glass-text {
-  font-size: 42px;
+  font-size: clamp(20px, 4vw, 42px);
   font-weight: bold;
   font-family: "customFont", sans-serif;
   color: cyan;
@@ -58,78 +66,9 @@
   background: rgba(79, 168, 255, 0.5);
   -webkit-background-clip: text;
   background-clip: text;
-  z-index: 5; /* Lowered so it appears beneath the barrel-glass */
 }
+
 .glass-text:hover {
   transform: scale(1.1);
   text-shadow: 0px 0px 12px rgba(255, 255, 255, 0.8);
-}
-
-/* Responsive Design */
-@media screen and (max-width: 1200px) {
-  .barrel-glass {
-    width: 90%;
-    height: 55px;
-    margin-left: 0;
-  }
-  .nav-links {
-    justify-content: space-evenly;
-  }
-  .image-holder {
-    width: 200px;
-    height: 200px;
-    margin-top: 130px;
-  }
-}
-
-@media screen and (max-width: 900px) {
-  .barrel-glass {
-    height: 50px;
-    width: 85%;
-  }
-  .glass-text {
-    font-size: 24px;
-  }
-  .image-holder {
-    width: 170px;
-    height: 170px;
-    margin-top: 120px;
-  }
-}
-
-@media screen and (max-width: 600px) {
-  .barrel-glass {
-    height: 45px;
-    width: 80%;
-    border-width: 2px;
-  }
-  .glass-text {
-    font-size: 20px;
-  }
-  .image-holder {
-    width: 150px;
-    height: 150px;
-    margin-top: 100px;
-  }
-}
-@media screen and (max-width: 768px) {
-  .image-holder {
-    position: relative; /* Change from absolute to relative */
-    margin: 20px auto; /* Center the image */
-    width: 180px; /* Reduce size for smaller screens */
-    height: 180px;
-  }
-
-  .profile-image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-}
-
-@media screen and (max-width: 480px) {
-  .image-holder {
-    width: 150px; /* Further reduce size for very small screens */
-    height: 150px;
-  }
 }

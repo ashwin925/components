@@ -6,13 +6,13 @@ import "./glassDiv.css";
 
 const GlassPanel = () => {
   return (
-    <div className="container-wrapper">
-      {/* 3D Bubbles (Behind the Glass Panel) */}
-      <Canvas className="canvas-container">
-        <ambientLight intensity={0.5} />
-        <Particles count={150} /> 
-      </Canvas>
-
+    // <div className="container-wrapper">
+    //   {/* 3D Bubbles (Behind the Glass Panel) */}
+    //   <Canvas className="canvas-container">
+    //     <ambientLight intensity={0.5} />
+    //     <Particles count={150} /> 
+    //   </Canvas>
+      <div>
       {/* Glass Panel (Front Layer) */}
       <div className="glass-panel">
         <BarrelGlass />
@@ -28,6 +28,9 @@ const GlassPanel = () => {
           </p>
         </div>
       </div>
+      {/* <div className="glass-panel">
+        <h1>jii</h1>
+      </div> */}
     </div>
   );
 };
