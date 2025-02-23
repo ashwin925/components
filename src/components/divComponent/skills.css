@@ -29,7 +29,7 @@
 .skills-row {
   display: flex;
   justify-content: center;
-  gap: 18px; /* Reduced gap */
+  gap: 17px;
   flex-wrap: wrap;
 }
 
@@ -37,16 +37,16 @@
   position: relative;
   width: 80px;
   height: 80px;
-  background-color: navy;
+  background-color: rgb(0, 0, 0);
   clip-path: polygon(
     35% 0%, 65% 0%, 100% 25%, 100% 75%, 
     65% 100%, 35% 100%, 0% 75%, 0% 25% ); 
   display: flex;
   align-items: center;
   justify-content: center;
-  
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  box-shadow: 0px 0px 15px rgba(0, 255, 255, 0.5);
+  box-shadow: inset 0px 0px 0px 2.5px rgb(0, 0, 255);
+  border: 3px solid rgb(0, 255, 255);
 }
 
 .skill-item:hover {
@@ -55,6 +55,6 @@
 }
 
 .skill-icon {
-  font-size: 2.8rem; /* Slightly bigger */
+  font-size: 2.9rem; /* Slightly bigger */
   color: cyan;
 }
