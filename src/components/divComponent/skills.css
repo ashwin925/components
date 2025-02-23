@@ -60,29 +60,6 @@
   color: cyan;
   transition: color 0.3s ease;
 }
-.skill-item:nth-child(1) { animation: shimmerWave 1s linear infinite; animation-delay: 0s; }
-.skill-item:nth-child(2) { animation: shimmerWave 1s linear infinite; animation-delay: 1s; }
-.skill-item:nth-child(3) { animation: shimmerWave 1s linear infinite; animation-delay: 2s; }
-.skill-item:nth-child(4) { animation: shimmerWave 1s linear infinite; animation-delay: 3s; }
-.skill-item:nth-child(5) { animation: shimmerWave 1s linear infinite; animation-delay: 4s; }
-.skill-item:nth-child(6) { animation: shimmerWave 1s linear infinite; animation-delay: 5s; }
-
-/* Framework set starts after all languages are done */
-.skill-item:nth-child(7) { animation: shimmerWave 1s linear infinite; animation-delay: 6s; }
-.skill-item:nth-child(8) { animation: shimmerWave 1s linear infinite; animation-delay: 7s; }
-.skill-item:nth-child(9) { animation: shimmerWave 1s linear infinite; animation-delay: 8s; }
-.skill-item:nth-child(10) { animation: shimmerWave 1s linear infinite; animation-delay: 9s; }
-.skill-item:nth-child(11) { animation: shimmerWave 1s linear infinite; animation-delay: 10s; }
-.skill-item:nth-child(12) { animation: shimmerWave 1s linear infinite; animation-delay: 11s; }
-
-/* Tools set starts after frameworks are done */
-.skill-item:nth-child(13) { animation: shimmerWave 1s linear infinite; animation-delay: 12s; }
-.skill-item:nth-child(14) { animation: shimmerWave 1s linear infinite; animation-delay: 13s; }
-.skill-item:nth-child(15) { animation: shimmerWave 1s linear infinite; animation-delay: 14s; }
-.skill-item:nth-child(16) { animation: shimmerWave 1s linear infinite; animation-delay: 15s; }
-.skill-item:nth-child(17) { animation: shimmerWave 1s linear infinite; animation-delay: 16s; }
-.skill-item:nth-child(18) { animation: shimmerWave 1s linear infinite; animation-delay: 17s; }
-
 @keyframes shimmerWave {
   0% {
     border: 3px solid rgb(0, 255, 255);
@@ -103,3 +80,32 @@
     transform: scale(1);
   }
 }
+
+/* Sequential shimmer effect: One at a time */
+.skill-item {
+  animation: none; /* Default state: No animation */
+}
+
+/* Manually delay each skill so the effect moves across the row */
+.skill-item:nth-child(1) { animation: shimmerWave 1s linear infinite; animation-delay: 0s; }
+.skill-item:nth-child(2) { animation: shimmerWave 1s linear infinite; animation-delay: 1s; }
+.skill-item:nth-child(3) { animation: shimmerWave 1s linear infinite; animation-delay: 2s; }
+.skill-item:nth-child(4) { animation: shimmerWave 1s linear infinite; animation-delay: 3s; }
+.skill-item:nth-child(5) { animation: shimmerWave 1s linear infinite; animation-delay: 4s; }
+.skill-item:nth-child(6) { animation: shimmerWave 1s linear infinite; animation-delay: 5s; }
+
+/* Move to frameworks after languages are done */
+.skill-item:nth-child(7) { animation: shimmerWave 1s linear infinite; animation-delay: 6s; }
+.skill-item:nth-child(8) { animation: shimmerWave 1s linear infinite; animation-delay: 7s; }
+.skill-item:nth-child(9) { animation: shimmerWave 1s linear infinite; animation-delay: 8s; }
+.skill-item:nth-child(10) { animation: shimmerWave 1s linear infinite; animation-delay: 9s; }
+.skill-item:nth-child(11) { animation: shimmerWave 1s linear infinite; animation-delay: 10s; }
+.skill-item:nth-child(12) { animation: shimmerWave 1s linear infinite; animation-delay: 11s; }
+
+/* Move to tools after frameworks are done */
+.skill-item:nth-child(13) { animation: shimmerWave 1s linear infinite; animation-delay: 12s; }
+.skill-item:nth-child(14) { animation: shimmerWave 1s linear infinite; animation-delay: 13s; }
+.skill-item:nth-child(15) { animation: shimmerWave 1s linear infinite; animation-delay: 14s; }
+.skill-item:nth-child(16) { animation: shimmerWave 1s linear infinite; animation-delay: 15s; }
+.skill-item:nth-child(17) { animation: shimmerWave 1s linear infinite; animation-delay: 16s; }
+.skill-item:nth-child(18) { animation: shimmerWave 1s linear infinite; animation-delay: 17s; }
