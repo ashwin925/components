@@ -9,6 +9,7 @@ const BarrelGlass = () => {
         <nav className="nav-links">
           <span className="glass-text">Home</span>
           <span className="glass-text">Skills</span>
+          <span className="glass-text">Projects</span>
           <span className="glass-text">Contact Me</span>
         </nav>
       </div>
