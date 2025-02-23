@@ -63,6 +63,7 @@
   -webkit-text-stroke: 1.2px rgb(0, 0, 0); 
 }
 
+
 /* Responsive Glass Panel */
 @media screen and (max-width: 1200px) {
   .glass-panel {
