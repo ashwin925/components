@@ -17,7 +17,7 @@
 }  */
 
 /* Glass Panel */
-.glass-panel, .glass-panel-two {
+.glass-panel, .glass-panel-two, .glass-panel-three {
   width: min(90%, 1000px); 
   height: 485px;
   background: rgba(255, 255, 255, 0.1);
@@ -34,6 +34,9 @@
 }
 
 .glass-panel-two{
+  margin-top: 30px;
+}
+.glass-panel-three{
   margin-top: 30px;
 }
 
