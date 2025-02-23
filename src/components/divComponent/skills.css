@@ -47,6 +47,7 @@
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   box-shadow: inset 0px 0px 0px 2.5px rgb(0, 0, 255);
   border: 3px solid rgb(0, 255, 255);
+  animation: none;
 }
 
 .skill-item:hover {
@@ -57,4 +58,44 @@
 .skill-icon {
   font-size: 2.9rem; /* Slightly bigger */
   color: cyan;
+  transition: color 0.3s ease;
+}
+.skill-item:nth-child(1) { animation: shimmerWave 1.2s infinite linear; animation-delay: 0s; }
+.skill-item:nth-child(2) { animation: shimmerWave 1.2s infinite linear; animation-delay: 0.2s; }
+.skill-item:nth-child(3) { animation: shimmerWave 1.2s infinite linear; animation-delay: 0.4s; }
+.skill-item:nth-child(4) { animation: shimmerWave 1.2s infinite linear; animation-delay: 0.6s; }
+.skill-item:nth-child(5) { animation: shimmerWave 1.2s infinite linear; animation-delay: 0.8s; }
+.skill-item:nth-child(6) { animation: shimmerWave 1.2s infinite linear; animation-delay: 1s; }
+.skill-item:nth-child(7) { animation: shimmerWave 1.2s infinite linear; animation-delay: 1.2s; }
+.skill-item:nth-child(8) { animation: shimmerWave 1.2s infinite linear; animation-delay: 1.4s; }
+.skill-item:nth-child(9) { animation: shimmerWave 1.2s infinite linear; animation-delay: 1.6s; }
+.skill-item:nth-child(10) { animation: shimmerWave 1.2s infinite linear; animation-delay: 1.8s; }
+.skill-item:nth-child(11) { animation: shimmerWave 1.2s infinite linear; animation-delay: 2s; }
+.skill-item:nth-child(12) { animation: shimmerWave 1.2s infinite linear; animation-delay: 2.2s; }
+.skill-item:nth-child(13) { animation: shimmerWave 1.2s infinite linear; animation-delay: 2.4s; }
+.skill-item:nth-child(14) { animation: shimmerWave 1.2s infinite linear; animation-delay: 2.6s; }
+.skill-item:nth-child(15) { animation: shimmerWave 1.2s infinite linear; animation-delay: 2.8s; }
+.skill-item:nth-child(16) { animation: shimmerWave 1.2s infinite linear; animation-delay: 3s; }
+.skill-item:nth-child(17) { animation: shimmerWave 1.2s infinite linear; animation-delay: 3.2s; }
+.skill-item:nth-child(18) { animation: shimmerWave 1.2s infinite linear; animation-delay: 3.4s; }
+
+@keyframes shimmerWave {
+  0% {
+    border: 3px solid rgb(0, 255, 255);
+    box-shadow: inset 0px 0px 0px 2.5px rgb(0, 0, 255);
+    color: cyan;
+    transform: scale(1);
+  }
+  50% {
+    border: 3px solid pink;
+    box-shadow: inset 0px 0px 15px red;
+    color: yellow;
+    transform: scale(1.1);
+  }
+  100% {
+    border: 3px solid rgb(0, 255, 255);
+    box-shadow: inset 0px 0px 0px 2.5px rgb(0, 0, 255);
+    color: cyan;
+    transform: scale(1);
+  }
 }
