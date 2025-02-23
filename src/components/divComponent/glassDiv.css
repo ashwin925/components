@@ -44,6 +44,8 @@
   font-weight: bold;
   font-family: 'orbitron', sans-serif;
   letter-spacing: 1px;
+  word-spacing: 0px;
+  line-height: 1.5;
   color: cyan; /* Cyan glass effect */
   text-shadow: 
     0px 0px 5px rgba(79, 168, 255, 0.6), /* Cyan glow */
