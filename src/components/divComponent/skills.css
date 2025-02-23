@@ -1,0 +1,31 @@
+.skills-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  padding: 20px;
+}
+
+.skills-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  width: 100%;
+  max-width: 900px;
+}
+
+.skill-icon {
+  font-size: 3rem;
+  color: navy;
+  background: rgba(0, 0, 50, 0.8);
+  padding: 15px;
+  border-radius: 10px;
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.skill-icon:hover {
+  transform: scale(1.2);
+  filter: brightness(1.5);
+}
