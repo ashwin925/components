@@ -48,7 +48,6 @@
   transform: translateY(-55%);
 }
 
-/* Glass Text */
 .glass-text {
   font-size: clamp(20px, 4vw, 42px);
   font-weight: bold;
