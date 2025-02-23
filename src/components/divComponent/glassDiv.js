@@ -28,9 +28,9 @@ const GlassPanel = () => {
           </p>
         </div>
       </div>
-      {/* <div className="glass-panel">
+      <div className="glass-panel-two">
         <h1>jii</h1>
-      </div> */}
+      </div>
     </div>
   );
 };
