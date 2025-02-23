@@ -39,7 +39,7 @@
 
 .about-title, .about-text {
   font-size: 25px;
-  margin-top: 20px;
+  margin-top: px;
   margin-left: 170px;
   font-weight: bold;
   font-family: 'orbitron', sans-serif;
@@ -48,10 +48,9 @@
   line-height: 1.5;
   color: cyan; /* Cyan glass effect */
   text-shadow: 
-    0px 0px 5px rgba(0, 0, 128, 0.6),  /* Deep navy glow */
-    0px 0px 10px rgba(10, 50, 120, 0.8), /* Outer navy blue glow */
-    0px 0px 15px rgba(0, 0, 128, 0.5);  /* Soft inner navy glow */
-
+    0px 0px 5px navy, /* Cyan glow */
+    0px 0px 10px white, /* Dark blue outer glow */
+    0px 0px 15px white; /* Slight inner glass glow */
   -webkit-text-stroke: 1.5px rgb(0, 0, 0); 
   background: rgba(79, 168, 255, 0.5); 
   -webkit-background-clip: text;
