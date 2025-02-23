@@ -1,3 +1,29 @@
+/* Glass-like Barrel Shape */
+.barrel-glass {
+  position: absolute;
+  width: 1150px;
+  height: 60px;
+  margin-left: -75px;
+  margin-top: 30px;
+  background: linear-gradient(to bottom, rgba(0, 0, 128, 0.7), rgba(65, 105, 225, 0.3), rgba(0, 0, 128, 0.7));
+  backdrop-filter: blur(5px) brightness(1.2);
+  border: 3px solid rgba(0, 229, 255, 0.8);
+  outline: 2px solid rgb(0, 0, 255);
+  box-shadow: 0px 0px 15px rgba(0, 150, 255, 0.4);
+  z-index: 100; /* Increased to ensure it appears above the text */
+}
+.image-holder{
+  width: 250px;
+  height: 250px;
+  position: absolute;
+  margin-top: 150px;
+  margin-left: -80px;
+  border-radius: 10px;
+  background: linear-gradient(to bottom, rgba(0, 0, 128, 0.7), rgba(65, 105, 225, 0.3), rgba(0, 0, 128, 0.7));
+  backdrop-filter: blur(5px) brightness(1.2);
+  border: 3px solid rgba(0, 229, 255, 0.8);
+  box-shadow: 0px 0px 15px rgba(0, 150, 255, 0.4);
+}
 .nav-links {
   display: flex;
   justify-content: space-around; /* Spread them evenly */
@@ -8,23 +34,23 @@
 }
 
 .glass-text {
-  font-size: 27px;
+  font-size: 30px;
   font-weight: bold;
-  color: transparent; /* Make text transparent */
+  color: cyan;
   text-transform: uppercase;
   letter-spacing: 1px;
-  transition: 0.3s ease-in-out;
+  transition: 1s ease-in-out;
   cursor: pointer;
   text-shadow: 
-    0px 0px 5px rgba(79, 168, 255, 0.6), /* Cyan glow */
-    0px 0px 10px rgba(10, 50, 120, 0.8), /* Dark blue outer glow */
-    0px 0px 15px rgba(79, 168, 255, 0.4); /* Slight inner glass glow */
-  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.4); /* Semi-transparent stroke */
-  background: rgba(79, 168, 255, 0.3); 
+    0px 0px 5px rgba(79, 168, 255, 0.6),
+    0px 0px 10px rgba(10, 50, 120, 0.8),
+    0px 0px 15px rgba(79, 168, 255, 0.4);
+  -webkit-text-stroke: 1px rgb(0, 0, 0);
+  background: rgba(79, 168, 255, 0.5);
   -webkit-background-clip: text;
   background-clip: text;
+  z-index: 5; /* Lowered so it appears beneath the barrel-glass */
 }
-
 .glass-text:hover {
   transform: scale(1.1);
   text-shadow: 0px 0px 12px rgba(255, 255, 255, 0.8);
