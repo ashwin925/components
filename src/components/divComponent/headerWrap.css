@@ -49,7 +49,7 @@
 }
 
 .glass-text {
-  font-size: clamp(20px, 4vw, 42px);
+  font-size: clamp(20px, 3.5vw, 42px);
   font-weight: bold;
   font-family: "customFont", sans-serif;
   color: cyan;
