@@ -48,7 +48,7 @@
     0px 0px 5px rgba(79, 168, 255, 0.6), /* Cyan glow */
     0px 0px 10px rgba(10, 50, 120, 0.8), /* Dark blue outer glow */
     0px 0px 15px rgba(79, 168, 255, 0.4); /* Slight inner glass glow */
-  -webkit-text-stroke: 1px rgb(0, 0, 0); 
+  -webkit-text-stroke: 1.5px rgb(0, 0, 0); 
   background: rgba(79, 168, 255, 0.5); 
   -webkit-background-clip: text;
   background-clip: text;
@@ -57,4 +57,5 @@
   margin-top: 130px;
   font-size: 40px;
   font-family: 'zfont', sans-serif;
+  -webkit-text-stroke: 1.2px rgb(0, 0, 0); 
 }
