@@ -1,6 +1,6 @@
 import React from "react";
-import { Canvas } from "@react-three/fiber";
-import Particles from './Particles';
+// import { Canvas } from "@react-three/fiber";
+// import Particles from './Particles';
 import BarrelGlass from "./headerWrap";
 import "./glassDiv.css";
 
