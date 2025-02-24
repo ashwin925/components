@@ -2,14 +2,20 @@ import React, { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import { InView } from "react-intersection-observer";
 import "./project.css";
+import one from "../images/Screenshot 2025-02-24 191142.png"
+import two from "../images/Screenshot 2025-02-24 192048.png"
+import three from "../images/Screenshot 2025-02-24 192331.png"
+import four from "../images/Screenshot 2025-02-24 192649.png"
+import five from "../images/Screenshot 2025-02-24 193114.png"
+import six from "../images/Screenshot 2025-02-24 193159.png"
 
 const projects = [
-  { title: "Project 1", description: "Futuristic AI-powered tool.", img: "https://via.placeholder.com/300" },
-  { title: "Project 2", description: "Next-gen blockchain app.", img: "https://via.placeholder.com/300" },
-  { title: "Project 3", description: "VR immersive experience.", img: "https://via.placeholder.com/300" },
-  { title: "Project 4", description: "Cutting-edge IoT solution.", img: "https://via.placeholder.com/300" },
-  { title: "Project 5", description: "Quantum computing breakthrough.", img: "https://via.placeholder.com/300" },
-  { title: "Project 6", description: "Neural network AI innovation.", img: "https://via.placeholder.com/300" }
+  { title: "Project 1", description: "Futuristic AI-powered tool.", img: one },
+  { title: "Project 2", description: "Next-gen blockchain app.", img: two },
+  { title: "Project 3", description: "VR immersive experience.", img: three },
+  { title: "Project 4", description: "Cutting-edge IoT solution.", img: four },
+  { title: "Project 5", description: "Quantum computing breakthrough.", img: five },
+  { title: "Project 6", description: "Neural network AI innovation.", img: six }
 ];
 
 const ProjectPage = () => {
