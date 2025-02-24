@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { FaHtml5, FaCss3Alt, FaJs, FaJava, FaPython, FaReact, FaNodeJs, FaGitAlt, FaGithub, FaDocker } from "react-icons/fa";
 import { SiTypescript, SiNextdotjs, SiExpress, SiTailwindcss, SiBootstrap, SiMongodb, SiFigma, SiFirebase } from "react-icons/si";
@@ -41,24 +41,37 @@ const Skills = () => {
     },
   ];
 
+  const [activeIndex, setActiveIndex] = useState(0);
+  const totalSkills = skillsData.reduce((acc, category) => acc + category.skills.length, 0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setActiveIndex((prevIndex) => (prevIndex + 1) % totalSkills);
+    }, 1000);
+    return () => clearInterval(interval);
+  }, [totalSkills]);
+
+  let indexCounter = 0;
+
   return (
     <div className="skills-container">
       {skillsData.map((category, index) => (
         <div key={index} className="skills-section">
           <h2 className="skills-title">{category.title}</h2>
           <div className="skills-row">
-            {category.skills.map((skill, i) => (
-              <motion.div
-                key={i}
-                className="skill-item"
-                whileHover={{ scale: 1.15 }}
-                initial={{ opacity: 0, scale: 0.5 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.3, delay: i * 0.1 }}
-              >
-                <div className="skill-icon">{skill.icon}</div>
-              </motion.div>
-            ))}
+            {category.skills.map((skill, i) => {
+              const isActive = indexCounter === activeIndex;
+              indexCounter++;
+              return (
+                <motion.div
+                  key={i}
+                  className={`skill-item ${isActive ? "active" : ""}`}
+                  whileHover={{ scale: 1.15 }}
+                >
+                  <div className="skill-icon">{skill.icon}</div>
+                </motion.div>
+              );
+            })}
           </div>
         </div>
       ))}
