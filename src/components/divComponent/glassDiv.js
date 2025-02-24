@@ -3,6 +3,7 @@ import React from "react";
 // import Particles from './Particles';
 import BarrelGlass from "./headerWrap";
 import SkillsSection from "./skills";
+import Projects from "./project";
 import "./glassDiv.css";
 
 const GlassPanel = () => {
