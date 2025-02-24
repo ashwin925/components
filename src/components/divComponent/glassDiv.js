@@ -34,7 +34,7 @@ const GlassPanel = () => {
         <SkillsSection />
       </div>
       <div className="glass-panel-three">
-        <h1>jii</h1>
+        <Projects />
       </div>
       <div className="glass-panel-four">
         <h1>jii</h1>

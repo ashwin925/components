@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import { Canvas } from "@react-three/fiber";
 import { useInView } from "react-intersection-observer";
-import "./projects.css";
+import "./project.css";
 
 const projects = [
   { id: 1, title: "Quantum Dashboard", description: "A futuristic admin dashboard with AI analytics.", year: "2025" },
