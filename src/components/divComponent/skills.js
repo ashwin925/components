@@ -49,7 +49,7 @@ const Skills = () => {
     const interval = setInterval(() => {
       setPreviousIndex(activeIndex); 
       setActiveIndex((prevIndex) => (prevIndex + 1) % totalSkills);
-    }, 750); // Shortened duration for seamless effect
+    }, 270); // Shortened duration for seamless effect
 
     return () => clearInterval(interval);
   }, [activeIndex, totalSkills]);
