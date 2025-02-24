@@ -33,7 +33,7 @@
 .project-card {
   min-height: 220px;
   min-width: 300px;
-  background: linear-gradient(135deg, rgba(0, 255, 255, 0.7), rgba(0, 255, 100, 0.7));
+  background: linear-gradient(135deg, rgba(0, 255, 255, 0.7),rgba(0, 255, 180, 0.7),  rgba(0, 255, 100, 0.7));
   border-radius: 15px;
   padding: 15px;
   text-align: center;
