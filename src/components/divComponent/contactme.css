@@ -27,6 +27,8 @@
 }
 
 .form-wrapper {
+  height: 300px;
+  width: 450px;
   background: rgba(10, 10, 10, 0.9);
   padding: 30px;
   border-radius: 10px;
