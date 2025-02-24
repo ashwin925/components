@@ -27,12 +27,12 @@
 
 @keyframes loopScroll {
   0% { transform: translateX(0); }
-  100% { transform: translateX(-100%); }
+  100% { transform: translateX(-50%); }
 }
 
 .project-card {
   min-width: 300px;
-  background: linear-gradient(135deg, rgba(0, 255, 255, 0.5), rgba(0, 255, 128, 0.5));
+  background: linear-gradient(135deg, rgba(0, 255, 255, 0.7), rgba(0, 255, 100, 0.7));
   border-radius: 15px;
   padding: 15px;
   text-align: center;

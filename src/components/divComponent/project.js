@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import { InView } from "react-intersection-observer";
 import "./project.css";
@@ -13,16 +13,26 @@ const projects = [
 ];
 
 const ProjectPage = () => {
+  const sliderRef = useRef(null);
+
+  useEffect(() => {
+    const slider = sliderRef.current;
+    if (!slider) return;
+    const firstClone = slider.firstElementChild.cloneNode(true);
+    slider.appendChild(firstClone);
+  }, []);
+
   return (
     <div className="project-container">
       <div className="projects-wrapper">
         <motion.div
+          ref={sliderRef}
           className="projects-slider"
           initial={{ x: "0%" }}
           animate={{ x: "-100%" }}
           transition={{ repeat: Infinity, duration: 15, ease: "linear" }}
         >
-          {[...projects].map((project, index) => (
+          {[...projects, ...projects].map((project, index) => (
             <InView key={index} triggerOnce threshold={0.5}>
               {({ inView, ref }) => (
                 <motion.div
