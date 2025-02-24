@@ -37,7 +37,8 @@
   border-radius: 15px;
   padding: 15px;
   text-align: center;
-  box-shadow: 0 0 15px rgba(0, 255, 255, 0.8);
+  border: 1.5px solid gold;
+  outline: 3.5px solid black;
   transition: transform 0.4s, box-shadow 0.4s;
 }
 
@@ -45,6 +46,7 @@
   height: 90%;
   width: 100%;
   margin-top: 15px;
+  outline: 4px solid black;
   border-radius: 10px;
   transition: transform 0.5s ease-in-out;
 }
