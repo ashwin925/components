@@ -4,6 +4,7 @@ import React from "react";
 import BarrelGlass from "./headerWrap";
 import SkillsSection from "./skills";
 import Projects from "./project";
+import ContactPage from "./contactme";
 import "./glassDiv.css";
 
 const GlassPanel = () => {
@@ -37,7 +38,7 @@ const GlassPanel = () => {
         <Projects />
       </div>
       <div className="glass-panel-four">
-        <h1>jii</h1>
+        <ContactPage />
       </div>
     </div>
   );

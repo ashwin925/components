@@ -1,0 +1,73 @@
+.contact-container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.cosmic-bg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, rgba(0, 255, 255, 0.1), transparent),
+    linear-gradient(to bottom, #001f3f, #000);
+  animation: cosmicFlow 10s infinite linear;
+  z-index: -1;
+}
+
+@keyframes cosmicFlow {
+  0% { background-position: 0% 0%; }
+  100% { background-position: 100% 100%; }
+}
+
+.form-wrapper {
+  background: rgba(10, 10, 10, 0.9);
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 0 20px cyan;
+  text-align: center;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: none;
+  outline: none;
+  background: rgba(0, 0, 0, 0.8);
+  color: cyan;
+  border-bottom: 2px solid cyan;
+}
+
+.contact-form button {
+  background: cyan;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.contact-form button:hover {
+  background: rgba(0, 255, 255, 0.8);
+}
+
+.warp-effect {
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(circle, cyan, transparent);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.warp-text {
+  color: cyan;
+  font-size: 20px;
+  font-weight: bold;
+}
