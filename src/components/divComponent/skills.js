@@ -42,14 +42,17 @@ const Skills = () => {
   ];
 
   const [activeIndex, setActiveIndex] = useState(0);
+  const [previousIndex, setPreviousIndex] = useState(-1);
   const totalSkills = skillsData.reduce((acc, category) => acc + category.skills.length, 0);
 
   useEffect(() => {
     const interval = setInterval(() => {
+      setPreviousIndex(activeIndex); 
       setActiveIndex((prevIndex) => (prevIndex + 1) % totalSkills);
-    }, 1000);
+    }, 750); // Shortened duration for seamless effect
+
     return () => clearInterval(interval);
-  }, [totalSkills]);
+  }, [activeIndex, totalSkills]);
 
   let indexCounter = 0;
 
@@ -61,12 +64,13 @@ const Skills = () => {
           <div className="skills-row">
             {category.skills.map((skill, i) => {
               const isActive = indexCounter === activeIndex;
+              const isPrevious = indexCounter === previousIndex;
               indexCounter++;
+              
               return (
                 <motion.div
                   key={i}
-                  className={`skill-item ${isActive ? "active" : ""}`}
-                  whileHover={{ scale: 1.15 }}
+                  className={`skill-item ${isActive ? "active" : ""} ${isPrevious ? "previous" : ""}`}
                 >
                   <div className="skill-icon">{skill.icon}</div>
                 </motion.div>
