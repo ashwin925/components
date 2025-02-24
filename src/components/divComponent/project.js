@@ -15,9 +15,9 @@ const ProjectPage = () => {
     <div className="project-container">
       <motion.div
         className="projects-wrapper"
-        initial={{ x: "100vw" }}
-        animate={{ x: "0" }}
-        transition={{ duration: 1.5, ease: "easeOut" }}
+        initial={{ x: "100%" }}
+        animate={{ x: "-100%" }}
+        transition={{ repeat: Infinity, duration: 10, ease: "linear" }}
       >
         {projects.map((project, index) => (
           <InView key={index} triggerOnce threshold={0.5}>
@@ -26,7 +26,7 @@ const ProjectPage = () => {
                 ref={ref}
                 className="project-card"
                 initial={{ opacity: 0, scale: 0.8 }}
-                animate={inView ? { opacity: 1, scale: 1, rotateY: 360 } : { opacity: 0 }}
+                animate={inView ? { opacity: 1, scale: 1 } : { opacity: 0 }}
                 transition={{ duration: 0.8, type: "spring" }}
                 whileHover={{ scale: 1.1, boxShadow: "0px 0px 20px cyan" }}
               >

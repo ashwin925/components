@@ -1,7 +1,7 @@
 .project-container {
   width: 100vw;
   height: 100vh;
-  overflow-x: auto;
+  overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -13,11 +13,13 @@
   gap: 20px;
   padding: 20px;
   white-space: nowrap;
+  position: absolute;
+  will-change: transform;
 }
 
 .project-card {
   min-width: 300px;
-  background: radial-gradient(circle, rgba(0, 255, 255, 0.2), rgba(0, 0, 0, 0.8));
+  background: linear-gradient(135deg, rgba(0, 255, 255, 0.2), rgba(0, 0, 0, 0.8));
   border-radius: 15px;
   padding: 15px;
   text-align: center;
