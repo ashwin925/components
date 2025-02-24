@@ -14,16 +14,13 @@
   font-weight: bold;
   font-family: 'zfont', sans-serif;
   text-transform: uppercase;
-  color: cyan;
   letter-spacing: 3px;
-  text-shadow: 
-    0px 0px 5px navy, 
-    0px 0px 10px white, 
-    0px 0px 15px white;
-  -webkit-text-stroke: 1.2px rgb(0, 0, 0); 
-  background: linear-gradient(to right, #ff7e5f, #feb47b);
+  -webkit-text-stroke: 1.2px rgb(0, 0, 0);
+  background: linear-gradient(90deg,red,  yellow, cyan);
   -webkit-background-clip: text;
   background-clip: text;
+  color: transparent;
+  animation: shimmer 3s linear infinite;
 }
 
 .skills-row {
