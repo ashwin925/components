@@ -22,7 +22,7 @@ const ProjectPage = () => {
           animate={{ x: "-100%" }}
           transition={{ repeat: Infinity, duration: 15, ease: "linear" }}
         >
-          {[...projects, ...projects].map((project, index) => (
+          {[...projects].map((project, index) => (
             <InView key={index} triggerOnce threshold={0.5}>
               {({ inView, ref }) => (
                 <motion.div
