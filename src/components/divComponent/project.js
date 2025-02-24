@@ -8,38 +8,42 @@ const projects = [
   { title: "Project 2", description: "Next-gen blockchain app.", img: "https://via.placeholder.com/300" },
   { title: "Project 3", description: "VR immersive experience.", img: "https://via.placeholder.com/300" },
   { title: "Project 4", description: "Cutting-edge IoT solution.", img: "https://via.placeholder.com/300" },
+  { title: "Project 5", description: "Quantum computing breakthrough.", img: "https://via.placeholder.com/300" },
+  { title: "Project 6", description: "Neural network AI innovation.", img: "https://via.placeholder.com/300" }
 ];
 
 const ProjectPage = () => {
   return (
     <div className="project-container">
-      <motion.div
-        className="projects-wrapper"
-        initial={{ x: "100%" }}
-        animate={{ x: "-100%" }}
-        transition={{ repeat: Infinity, duration: 10, ease: "linear" }}
-      >
-        {projects.map((project, index) => (
-          <InView key={index} triggerOnce threshold={0.5}>
-            {({ inView, ref }) => (
-              <motion.div
-                ref={ref}
-                className="project-card"
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={inView ? { opacity: 1, scale: 1 } : { opacity: 0 }}
-                transition={{ duration: 0.8, type: "spring" }}
-                whileHover={{ scale: 1.1, boxShadow: "0px 0px 20px cyan" }}
-              >
-                <img src={project.img} alt={project.title} className="project-image" />
-                <div className="project-info">
-                  <h3>{project.title}</h3>
-                  <p>{project.description}</p>
-                </div>
-              </motion.div>
-            )}
-          </InView>
-        ))}
-      </motion.div>
+      <div className="projects-wrapper">
+        <motion.div
+          className="projects-slider"
+          initial={{ x: "0%" }}
+          animate={{ x: "-100%" }}
+          transition={{ repeat: Infinity, duration: 15, ease: "linear" }}
+        >
+          {[...projects, ...projects].map((project, index) => (
+            <InView key={index} triggerOnce threshold={0.5}>
+              {({ inView, ref }) => (
+                <motion.div
+                  ref={ref}
+                  className="project-card"
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={inView ? { opacity: 1, scale: 1 } : { opacity: 0 }}
+                  transition={{ duration: 0.8, type: "spring" }}
+                  whileHover={{ scale: 1.1, boxShadow: "0px 0px 20px cyan" }}
+                >
+                  <img src={project.img} alt={project.title} className="project-image" />
+                  <div className="project-info">
+                    <h3>{project.title}</h3>
+                    <p>{project.description}</p>
+                  </div>
+                </motion.div>
+              )}
+            </InView>
+          ))}
+        </motion.div>
+      </div>
       <motion.div
         className="background-animation"
         animate={{ scale: [1, 1.05, 1], opacity: [0.8, 1, 0.8] }}
