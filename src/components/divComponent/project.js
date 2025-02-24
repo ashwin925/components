@@ -10,12 +10,12 @@ import five from "../images/Screenshot 2025-02-24 193114.png"
 import six from "../images/Screenshot 2025-02-24 193159.png"
 
 const projects = [
-  { title: "Project 1", description: "Futuristic AI-powered tool.", img: one },
-  { title: "Project 2", description: "Next-gen blockchain app.", img: two },
-  { title: "Project 3", description: "VR immersive experience.", img: three },
-  { title: "Project 4", description: "Cutting-edge IoT solution.", img: four },
-  { title: "Project 5", description: "Quantum computing breakthrough.", img: five },
-  { title: "Project 6", description: "Neural network AI innovation.", img: six }
+  {  img: one },
+  {  img: two },
+  {  img: three },
+  {  img: four },
+  {  img: five },
+  {  img: six }
 ];
 
 const ProjectPage = () => {
