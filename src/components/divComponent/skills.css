@@ -46,22 +46,32 @@
   justify-content: center;
   box-shadow: inset 0px 0px 0px 2.5px rgb(0, 0, 255);
   border: 3px solid rgb(0, 255, 255);
-  transition: transform 0.3s ease, box-shadow 0.3s ease, border 0.3s ease;
+  transition: transform 0.5s ease-in-out, 
+              box-shadow 0.5s ease-in-out, 
+              border 0.5s ease-in-out;
 }
 
 .skill-icon {
   font-size: 2.9rem;
   color: cyan;
-  transition: color 0.3s ease;
+  transition: color 0.5s ease-in-out;
 }
 
 /* Active (Soliton Wave) Effect */
 .skill-item.active {
-  transform: scale(1.15);
+  transform: scale(1.25);
   border: 3px solid pink;
-  box-shadow: inset 0px 0px 15px red;
+  box-shadow: inset 0px 0px 20px red;
 }
 
 .skill-item.active .skill-icon {
   color: yellow;
+}
+
+/* Smoothly Scale Down */
+.skill-item:not(.active) {
+  transform: scale(1);
+  transition: transform 0.5s ease-in-out, 
+              box-shadow 0.5s ease-in-out, 
+              border 0.5s ease-in-out;
 }
