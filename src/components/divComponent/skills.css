@@ -21,7 +21,7 @@
     0px 0px 10px white, 
     0px 0px 15px white;
   -webkit-text-stroke: 1.2px rgb(0, 0, 0); 
-  background: rgba(79, 168, 255, 0.5);
+  background: linear-gradient(to right, #ff7e5f, #feb47b);
   -webkit-background-clip: text;
   background-clip: text;
 }
