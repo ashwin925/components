@@ -40,7 +40,7 @@
   background-color: rgb(0, 0, 0);
   clip-path: polygon(
     35% 0%, 65% 0%, 100% 25%, 100% 75%, 
-    65% 100%, 35% 100%, 0% 75%, 0% 25% ); 
+    65% 100%, 35% 100%, 0% 75%, 0% 25%);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -49,42 +49,19 @@
   transition: transform 0.3s ease, box-shadow 0.3s ease, border 0.3s ease;
 }
 
-/* Default State */
 .skill-icon {
   font-size: 2.9rem;
   color: cyan;
   transition: color 0.3s ease;
 }
 
-/* Soliton Wave Effect */
-@keyframes waveEffect {
-  0% {
-    transform: scale(1);
-    border: 3px solid rgb(0, 255, 255);
-    box-shadow: inset 0px 0px 0px 2.5px rgb(0, 0, 255);
-    color: cyan;
-  }
-  50% {
-    transform: scale(1.2);
-    border: 3px solid pink;
-    box-shadow: inset 0px 0px 15px red;
-    color: yellow;
-  }
-  100% {
-    transform: scale(1);
-    border: 3px solid rgb(0, 255, 255);
-    box-shadow: inset 0px 0px 0px 2.5px rgb(0, 0, 255);
-    color: cyan;
-  }
+/* Active (Soliton Wave) Effect */
+.skill-item.active {
+  transform: scale(1.15);
+  border: 3px solid pink;
+  box-shadow: inset 0px 0px 15px red;
 }
 
-/* Apply Sequential Animation */
-.skill-item {
-  animation: none; /* Default state */
-}
-
-/* Dynamic looping through all elements */
-.skill-item:nth-child(n) {
-  animation: waveEffect 1.5s ease-in-out infinite;
-  animation-delay: calc(var(--wave-delay) * 0.3s);
+.skill-item.active .skill-icon {
+  color: yellow;
 }
