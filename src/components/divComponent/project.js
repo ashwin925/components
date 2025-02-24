@@ -30,7 +30,7 @@ const ProjectPage = () => {
           className="projects-slider"
           initial={{ x: "0%" }}
           animate={{ x: "-100%" }}
-          transition={{ repeat: Infinity, duration: 15, ease: "linear" }}
+          transition={{ repeat: Infinity, duration: 10, ease: "linear" }}
         >
           {[...projects, ...projects].map((project, index) => (
             <InView key={index} triggerOnce threshold={0.5}>
