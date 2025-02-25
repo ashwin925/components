@@ -15,7 +15,7 @@ const GlowingBackground = () => {
       <MovingGlowingSphere position={[0, 0, -1]} />
 
       {/* Postprocessing Effects */}
-      <EffectComposer>
+      <EffectComposer disableNormalPass>
         <Bloom luminanceThreshold={0.3} luminanceSmoothing={0.7} intensity={1.5} />
         <DepthOfField focusDistance={0.01} focalLength={0.2} bokehScale={2} />
       </EffectComposer>
@@ -34,17 +34,19 @@ const MovingGlowingSphere = ({ position }) => {
   });
 
   return (
-    <Sphere ref={meshRef} args={[1, 64, 64]} position={position}>
-      <MeshDistortMaterial
-        color="#00ffff"
-        distort={0.3}
-        speed={2}
-        emissive={new THREE.Color("#00ffff")}
-        emissiveIntensity={0.8}
-        metalness={0.9}
-        roughness={0.1}
-      />
-    </Sphere>
+    <group ref={meshRef} position={position}>
+      <Sphere args={[1, 64, 64]}>
+        <MeshDistortMaterial
+          color={"#00ffff"}
+          distort={0.3}
+          speed={2}
+          emissive={"#00ffff"}
+          emissiveIntensity={0.8}
+          metalness={0.9}
+          roughness={0.1}
+        />
+      </Sphere>
+    </group>
   );
 };
 
