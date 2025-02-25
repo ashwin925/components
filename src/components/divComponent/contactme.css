@@ -50,20 +50,20 @@
   outline: none;
   background: rgba(0, 0, 0, 0.5);
   color: black;
-  
+
   border-bottom: 2px solid black;
 }
 
 .contact-form button {
+  font-size: 17px;
   font-weight: bold;
-  background: cyan;
+  background: black;
   border: none;
   padding: 10px 20px;
   cursor: pointer;
   transition: 0.3s;
   outline: 2px solid rgb(0, 0, 0);
   border: 2px solid cyan;
-  box-shadow: inset 0px 0px 0px 2px rgb(0, 0, 0);
 }
 
 .contact-form button:hover {
