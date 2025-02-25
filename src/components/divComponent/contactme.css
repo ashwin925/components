@@ -36,7 +36,7 @@
   background: rgba(10, 10, 10, 0.4); /* Increased transparency */
   padding: 30px;
   border-radius: 10px;
-  box-shadow: 0 0 20px cyan;
+  box-shadow: 0 0 20px black;
   text-align: center;
   backdrop-filter: blur(8px); /* Added blur for clarity */
 }
@@ -49,9 +49,9 @@
   border: none;
   outline: none;
   background: rgba(0, 0, 0, 0.5);
-  color: cyan;
+  color: black;
   
-  /* border-bottom: 2px solid cyan; */
+  border-bottom: 2px solid black;
 }
 
 .contact-form button {
