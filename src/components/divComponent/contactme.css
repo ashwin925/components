@@ -1,6 +1,8 @@
 .contact-container {
   font-family: "zfont", sans-serif;
-  color: cyan;
+  color: black;
+  -webkit-text-stroke: 1px cyan; 
+  background: linear-gradient(90deg, cyan, white, cyan);
   width: 84vw;
   height: 91.3vh;
   margin-top: -18px;
@@ -38,7 +40,9 @@
   text-align: center;
   backdrop-filter: blur(8px); /* Added blur for clarity */
 }
-
+.contact-form input{
+  
+}
 .contact-form input,
 .contact-form textarea {
   width: 85%;
