@@ -2,7 +2,7 @@
   font-family: "zfont", sans-serif;
   color: black;
   -webkit-text-stroke: 1px cyan; 
-  background: linear-gradient(90deg, cyan, white, cyan);
+  /* background: linear-gradient(90deg, cyan, white, cyan); */
   width: 83.6vw;
   height: 91.2vh;
   margin-top: -18px;
