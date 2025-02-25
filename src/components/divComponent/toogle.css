@@ -5,16 +5,17 @@
   padding: 10px 20px;
   border: none;
   border-radius: 20px;
-  background: linear-gradient(45deg, cyan, blue);
+  background: linear-gradient(45deg, navy, black);
   color: white;
   font-size: 16px;
   cursor: pointer;
   transition: all 0.3s ease-in-out;
-  box-shadow: 0 0 10px cyan;
+  box-shadow: 0 0 10px black;
+  z-index: 100;
 }
 
 .toggle-button.active {
-  background: linear-gradient(45deg, black, gray);
+  background: linear-gradient(45deg, cyan, blue);
   box-shadow: 0 0 10px gray;
 }
 
