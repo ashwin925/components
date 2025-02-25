@@ -2,7 +2,7 @@ import * as THREE from "three";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { EffectComposer, Bloom, DepthOfField } from "@react-three/postprocessing";
 import { Sphere, MeshDistortMaterial } from "@react-three/drei";
-import { useRef } from "react";
+import { useRef, Suspense } from "react";
 
 const GlowingBackground = () => {
   return (
@@ -11,11 +11,13 @@ const GlowingBackground = () => {
       <ambientLight intensity={0.5} />
       <pointLight position={[10, 10, 10]} intensity={1.5} />
 
-      {/* Glowing Animated Sphere */}
-      <MovingGlowingSphere position={[0, 0, -1]} />
+      {/* Suspense to ensure async resources are loaded before rendering */}
+      <Suspense fallback={null}>
+        <MovingGlowingSphere position={[0, 0, -1]} />
+      </Suspense>
 
-      {/* Postprocessing Effects */}
-      <EffectComposer>
+      {/* Postprocessing Effects - Ensuring Depth Buffer is Enabled */}
+      <EffectComposer disableNormalPass>
         <Bloom luminanceThreshold={0.3} luminanceSmoothing={0.7} intensity={1.5} />
         <DepthOfField focusDistance={0.01} focalLength={0.2} bokehScale={2} />
       </EffectComposer>

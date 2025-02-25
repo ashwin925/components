@@ -8,7 +8,7 @@ import GlassPanel from './components/divComponent/glassDiv.js';
 // import HeaderWrapper from "./components/divComponent/headerWrap.js";
 // import BarrelHeader from "./components/divComponent/headerWrap.js";
 import ToogleButton from "./components/divComponent/toogle.js";
-import GlowingBackground from "./components/divComponent/threeDbg.js";
+// import GlowingBackground from "./components/divComponent/threeDbg.js";
 
 function App() {
   return (
@@ -22,9 +22,9 @@ function App() {
       <BarrelHeader />
     </div> */}
     <div>
-    <div style={{ width: "100vw", height: "100vh", position: "absolute" }}>
+    {/* <div style={{ width: "100vw", height: "100vh", position: "absolute" }}>
       <GlowingBackground />
-    </div>
+    </div> */}
         <ToogleButton />  
         <GlassPanel />
     </div>
