@@ -25,7 +25,7 @@ const ContactPage = () => {
             className="warp-effect"
             initial={{ scale: 0, opacity: 0 }}
             animate={{ scale: [0, 1.5, 0], opacity: [0, 1, 0] }}
-            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+            transition={{ duration: 2 }}
           >
             <h2 className="warp-text">Message Sent!</h2>
           </motion.div>
@@ -35,7 +35,7 @@ const ContactPage = () => {
             <input type="text" placeholder="Your Name" required />
             <input type="email" placeholder="Your Email" required />
             <textarea placeholder="Your Message" required />
-            <motion.button whileHover={{ scale: 1.1, boxShadow: "0px 0px 15px cyan" }} type="submit">
+            <motion.button whileHover={{ scale: 1.1 }} type="submit">
               Send
             </motion.button>
           </form>
