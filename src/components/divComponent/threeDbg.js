@@ -15,7 +15,7 @@ const GlowingBackground = () => {
       <MovingGlowingSphere position={[0, 0, -1]} />
 
       {/* Postprocessing Effects */}
-      <EffectComposer disableNormalPass>
+      <EffectComposer>
         <Bloom luminanceThreshold={0.3} luminanceSmoothing={0.7} intensity={1.5} />
         <DepthOfField focusDistance={0.01} focalLength={0.2} bokehScale={2} />
       </EffectComposer>
@@ -24,7 +24,7 @@ const GlowingBackground = () => {
 };
 
 // 🔵 Glowing Sphere Component (Animates for a cool effect)
-const MovingGlowingSphere = ({ position }) => {
+const MovingGlowingSphere = ({ position = [0, 0, -1] }) => {
   const meshRef = useRef(null);
 
   useFrame(({ clock }) => {
@@ -37,6 +37,7 @@ const MovingGlowingSphere = ({ position }) => {
     <group ref={meshRef} position={position}>
       <Sphere args={[1, 64, 64]}>
         <MeshDistortMaterial
+          attach="material"
           color={"#00ffff"}
           distort={0.3}
           speed={2}
