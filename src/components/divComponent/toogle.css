@@ -1,0 +1,29 @@
+.toggle-button {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 20px;
+  background: linear-gradient(45deg, cyan, blue);
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 0 10px cyan;
+}
+
+.toggle-button.active {
+  background: linear-gradient(45deg, black, gray);
+  box-shadow: 0 0 10px gray;
+}
+
+.toggle-button:hover {
+  transform: scale(1.1);
+}
+
+/* Dark mode styles */
+body.dark-mode {
+  background: black !important;
+  transition: background 0.5s ease-in-out;
+}

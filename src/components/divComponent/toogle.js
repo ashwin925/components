@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./ToggleButton.css";
+import "./toogle.css";
 
 const ToggleButton = () => {
   const [isDarkMode, setIsDarkMode] = useState(false);
