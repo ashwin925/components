@@ -55,6 +55,9 @@
   padding: 10px 20px;
   cursor: pointer;
   transition: 0.3s;
+  outline: 2px solid rgb(0, 0, 0);
+  border: 2px solid cyan;
+  box-shadow: inset 0px 0px 0px 2px rgb(0, 0, 0);
 }
 
 .contact-form button:hover {
