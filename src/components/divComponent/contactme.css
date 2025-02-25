@@ -40,9 +40,7 @@
   text-align: center;
   backdrop-filter: blur(8px); /* Added blur for clarity */
 }
-.contact-form input{
-  
-}
+
 .contact-form input,
 .contact-form textarea {
   width: 85%;
@@ -50,9 +48,10 @@
   margin: 12px 0;
   border: none;
   outline: none;
-  background: rgba(0, 0, 0, 0.5); /* Increased transparency */
+  background: rgba(0, 0, 0, 0.5);
   color: cyan;
-  border-bottom: 2px solid cyan;
+  
+  /* border-bottom: 2px solid cyan; */
 }
 
 .contact-form button {
