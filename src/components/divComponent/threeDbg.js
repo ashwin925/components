@@ -1,9 +1,8 @@
 import * as THREE from "three";
-import { Canvas } from "@react-three/fiber";
+import { Canvas, useFrame } from "@react-three/fiber";
 import { EffectComposer, Bloom, DepthOfField } from "@react-three/postprocessing";
 import { Sphere, MeshDistortMaterial } from "@react-three/drei";
 import { useRef } from "react";
-import { useFrame } from "@react-three/fiber";
 
 const GlowingBackground = () => {
   return (
@@ -25,8 +24,8 @@ const GlowingBackground = () => {
 };
 
 // 🔵 Glowing Sphere Component (Animates for a cool effect)
-const MovingGlowingSphere = ({ position }: { position: [number, number, number] }) => {
-  const meshRef = useRef<THREE.Mesh>(null);
+const MovingGlowingSphere = ({ position }) => {
+  const meshRef = useRef(null);
 
   useFrame(({ clock }) => {
     if (meshRef.current) {
@@ -40,7 +39,7 @@ const MovingGlowingSphere = ({ position }: { position: [number, number, number] 
         color="#00ffff"
         distort={0.3}
         speed={2}
-        emissive={"#00ffff"}
+        emissive={new THREE.Color("#00ffff")}
         emissiveIntensity={0.8}
         metalness={0.9}
         roughness={0.1}
