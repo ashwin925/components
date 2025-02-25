@@ -3,11 +3,11 @@
   color: black;
   -webkit-text-stroke: 1px cyan; 
   background: linear-gradient(90deg, cyan, white, cyan);
-  width: 84vw;
-  height: 91.3vh;
+  width: 83.6vw;
+  height: 91.2vh;
   margin-top: -18px;
-  margin-left: -20px;
-  border-radius: 15px;
+  margin-left: -18px;
+  border-radius: 16px;
   display: flex;
   align-items: center;
   justify-content: center;
