@@ -39,12 +39,12 @@
 
 .contact-form input,
 .contact-form textarea {
-  width: 100%;
+  width: 85%;
   padding: 10px;
-  margin: 10px 0;
+  margin: 12px 0;
   border: none;
   outline: none;
-  background: rgba(0, 0, 0, 0.3); /* Increased transparency */
+  background: rgba(0, 0, 0, 0.5); /* Increased transparency */
   color: cyan;
   border-bottom: 2px solid cyan;
 }
